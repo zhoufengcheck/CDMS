@@ -1,0 +1,17 @@
+*{
+    font-family:"Microsoft YaHei","微软雅黑" ;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: 1.1px;
+    font-size: 16px;
+    
+}
+html,body{width: 100%;height: 100%;}
+div,ul,li,strong,p,img{padding: 0;margin: 0}
+div,input,li{border-radius: 2px;}
+ul{list-style: none;}
+a{text-decoration: none;}
+a:hover{text-decoration: none;}
+.hide{display: none!important;}
+.fontArialMT{font-family:'ArialMT'}
