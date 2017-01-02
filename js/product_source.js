@@ -1,13 +1,13 @@
- var productInfo={
+ var productSource={
  	init_table:function(){
  		var flag=false;
  		var page_size=10;
         var sort_list=['dataBaseName','dataBaseNum'];
-        var thList=['服装ID','服装名称','商品源ID','进价','建议零售价','基本材质','操作'];
+        var thList=['商品源ID','商品源名称','商品源地址','电话号码','操作'];
         var data={}
         var tdList=[];
         this.setTabData(data,thList,tdList,flag,sort_list);
-        $('#productInfo .tab').table(data);
+        $('#productSource .tab').table(data);
  	},
  	setTabData:function(data,thList,tdList,flag,sort_list){
         var _th=[];
@@ -63,7 +63,3 @@
         data['td'] = _td;
  	}
  }
- $(function () {
- 	productInfo.init_table();
- 	productSource.init_table();
- });
