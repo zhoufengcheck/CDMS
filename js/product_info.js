@@ -5,6 +5,10 @@
         var sort_list=['dataBaseName','dataBaseNum'];
         var thList=['服装ID','服装名称','商品源ID','进价','建议零售价','基本材质','操作'];
         var data={}
+        data['pageNum']=1;//当前页
+        data['pageCount'] = 10;
+        data['totalPage'] = 10*5;
+        data['totalShow']='每页显示10条';
         var tdList=[];
         this.setTabData(data,thList,tdList,flag,sort_list);
         $('#productInfo .tab').table(data);
@@ -66,4 +70,9 @@
  $(function () {
  	productInfo.init_table();
  	productSource.init_table();
+    $('#select').chosen({
+        width:"150px",
+        disable_search:true
+    });
+
  });

@@ -5,6 +5,10 @@
         var sort_list=['dataBaseName','dataBaseNum'];
         var thList=['商品源ID','商品源名称','商品源地址','电话号码','操作'];
         var data={}
+        data['pageNum']=1;//当前页
+        data['pageCount'] = 10;
+        data['totalPage'] = 10*5;
+        data['totalShow']='每页显示10条';
         var tdList=[];
         this.setTabData(data,thList,tdList,flag,sort_list);
         $('#productSource .tab').table(data);
