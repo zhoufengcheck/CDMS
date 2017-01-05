@@ -1,6 +1,5 @@
 
 /******************.main .contentBox**********************/
-.main .contentBox{width: 1100px;overflow: hidden;margin: 0 auto;margin-top: 40px;}
 .main .contentBox .nav-tabs{border-bottom: 1px solid #577499}
 .main .contentBox .nav-tabs li{margin-right: 10px;}
 .main .contentBox .nav-tabs > li > a{border: 1px solid #577499;font-size: 14px; padding: 9px 20px;color: #577499}
