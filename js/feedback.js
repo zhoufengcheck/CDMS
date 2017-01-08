@@ -1,9 +1,9 @@
- var feedBack={
+var feedBack={
  	init_table:function(){
  		var flag=false;
  		var page_size=10;
         var sort_list=['dataBaseName','dataBaseNum'];
-        var thList=['服装ID','服装名称','商品源ID','进价','建议零售价','基本材质','操作'];
+        var thList=['意见ID','提交者','提交日期','意见内容','建议零售价','基本材质','操作'];
         var data={}
         data['pageNum']=1;//当前页
         data['pageCount'] = 10;

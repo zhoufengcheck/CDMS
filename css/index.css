@@ -23,14 +23,4 @@
 .main .contentBox .tab .table-bordered > thead > tr > th{font-size: 13px;color: #444;border-bottom: none;}
 .main .contentBox .tab .table-bordered > tbody > tr > td{font-size: 12px;color: #333;}
 
-/*.pull-left .dataTables_length label .chosen-container .chosen-drop{width: 70px}*/
-.pull-left .dataTables_length>label ,.pull-left .dataTables_length>span{font-size: 14px;color: #444;font-weight: normal;}
-.pull-left .dataTables_length{font-size: 14px;color: #444;font-weight: normal;}
-.pull-left .dataTables_length label select{padding: 3px 4px;height: 30px;border-radius: 2px !important;}
-.pull-left .dataTables_length label .chosen-drop{width:70px;}
-.pull-left .dataTables_length label .chosen-drop ul.chosen-results{width: 70px;padding: 0;}
-/***********分页样式*************/
-.pull-right .paging_bootstrap .pagination{float: right;margin: 0}
-.pull-right .paging_bootstrap .pagination>li>a{display: inline-block;height: 30px;padding: 0;width: 30px;text-align: center;line-height: 30px;border-radius: 2px !important;margin: 0 3px;font-size: 14px;color: #333;  }
-.pull-right .paging_bootstrap .pagination>li.active>a{border: none;color:#428bca;background-color: #ffffff}
-.pull-right .paging_bootstrap .pagination>li.disabled>a{background-color: #F9F9F9;border-color: #D9D9D9;z-index: auto;color: #999;}
+

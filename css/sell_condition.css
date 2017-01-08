@@ -1,3 +1,6 @@
-.contentBox{margin-top: 30px;border: 1px solid #ccc}
+.contentBox{padding-top: 30px}
 .margin_right{margin-right: 10px;}
-.contentBox .chart_box{width: 543px;height: 300px;float: left;background-color: red;}
+.width_max{width: 1100px;}
+.width_min{width: 544px;}
+.contentBox .chart_box{height: 450px;float: left;background-color:#F8F8F8;margin-bottom: 40px;}
+.contentBox .chart_box .title{width: 100%;height: 40px;background-color: #ccc;}
