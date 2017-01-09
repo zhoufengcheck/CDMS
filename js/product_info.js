@@ -70,7 +70,7 @@
  $(function () {
  	productInfo.init_table();
  	productSource.init_table();
-    $('#select').chosen({
+    $('.select').chosen({
         width:"150px",
         disable_search:true
     });

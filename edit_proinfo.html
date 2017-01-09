@@ -38,8 +38,46 @@
 		<div class="contentBox">
 			<div class="path">
 				<a href="">服装信息&gt;&gt;</a>
-				<a href="">189连帽卫衣&gt;&gt;</a>
-				<span>服装信息编辑</span>
+				<span>编辑 “189连帽卫衣” 信息</span>
+			</div>
+			<div class="messageBox">
+				<form action="" role="form">
+					<div class="form-group">
+					    <label for="name">服装名称<span class="red">*</span></label>
+					    <input type="text" class="form-control" id="name" placeholder="请输入名称">
+					</div>
+					<div class="form-group">
+					    <label for="name">服装进价<span class="red">*</span></label>
+					    <input type="text" class="form-control" id="name" placeholder="服装进价">
+					</div>
+					<div class="form-group">
+					    <label for="name">建议零售价<span class="red">*</span></label>
+					    <input type="text" class="form-control" id="name" placeholder="建议零售价">
+					</div>
+					<div class="form-group">
+					    <label for="name">服装颜色种类<span class="red">*</span></label>
+					    <input type="text" class="form-control" id="name" placeholder="服装颜色种类">
+					</div>
+					<div class="form-group">
+					    <label for="name">服装颜色型号<span class="red">*</span></label>
+					   <input name="S" type="checkbox" value="" />S
+					   <input name="M" type="checkbox" value="" />M
+					   <input name="M" type="checkbox" value="" />L
+					</div>
+					<div class="form-group">
+					    <label for="name">服装基本描述<span class="red">*</span></label>
+					    <textarea class="form-control" rows="3" placeholder="服装描述"></textarea>
+					</div>
+					<div class="form-group">
+						 <label for="name">服装图片<span class="red">*</span></label>
+						 <span class="btn bg1 "><i class="glyphicon glyphicon-plus"></i>上传图片</span>
+					</div>
+					<div id="pageBtns" class="pageBtns">
+						<button class="btn btn-xs btn-primary no-text-shadow" data-action="cancel">取消</button>
+						<button class="btn btn-xs btn-warning no-text-shadow" data-action="save" type="submit">保存</button>
+
+					</div>
+				</form>
 			</div>
 		</div>
 		<div class="footer"></div>
@@ -49,7 +87,5 @@
     <script src='js/jquery.table.js'></script>
     <script src='js/jquery.pages.js'></script>
     <script src='js/chosen.jquery.min.js'></script>
-    <script src='js/product_source.js'></script>
-    <script src='js/product_info.js'></script>
 </body>
 </html>
