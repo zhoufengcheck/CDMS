@@ -8,9 +8,7 @@
     <!--login.html样式导入-->
     <link rel="stylesheet" href="css/login.css"/>
     <script src='js/jquery-3.0.0.js'></script>
-    <script type="text/javascript">
-        
-    </script>
+    <script src='js/login.js'></script>
 </head>
 <body>
     <div class="main">
@@ -19,11 +17,13 @@
         </div>
         <div class="loginBox">
             <div class="loginBoxMain">
-                <p class="warm">123</p>
-                <input type="text" placeholder="用户名"/>
-                <input type="password" placeholder="密码"/ id='pwd'>
-                <input type="checkbox"/><span>记住密码</span>
-                <a href="index.html">登录</a>
+                <div class="inputBox">
+                    <p class="warm hide">用户名与密码错误</p>
+                    <input type="text" placeholder="用户名" id="username"/>
+                    <input type="password" placeholder="密码"/ id="pwd">
+                    <input type="checkbox"/><span>记住密码</span>
+                    <a href="javascript:;" id="login">登录</a>
+                </div>
             </div>
         </div>
     </div>
