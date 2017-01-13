@@ -1,73 +1,86 @@
 <?php
 header("Content-type: text/html; charset=utf-8");
-    // header("Content-type:application/json;charset=utf-8");
-    // header("Access-Control-Allow-Origin : *");
-    // header("Content-type:application/json;charset=utf-8");
-    // mysql_query("set names 'utf8' ");
-	// mysql_query("set character_set_client=utf8");
-	// mysql_query("set character_set_results=utf8");
-	// $str = json_encode($datas);
-    // echo preg_replace("#\\\u([0-9a-f]+)#ie", "iconv('UCS-2', 'UTF-8', pack('H4', '\\1'))", $str);
-    // echo preg_replace("#\\\u([0-9a-f]{4})#ie", "iconv('UCS-2LE', 'UTF-8', pack('H4', '\\1'))", $str);
+    
 
-	require_once 'medoo.php';
-    $database  = new medoo([
-        'database_type' => 'mysql',
-        'database_name' => 'cdms',
-        'server' => 'localhost',
-        'username' => 'root',
-        'password' => '',
-        'charset' => 'utf8'
-    ]);
+    header("Content-type: text/html; charset=UTF-8");
+    $con = mysql_connect("localhost","root","","cdms");
+    if (!$con){
+      die('Could not connect:' . mysql_error());
+    }
+    mysql_select_db("cdms", $con);
+
    class Result{
         public $totalpage='0';
         public $arr=array();
     }
-    $data=new Result();
-
-
+    function data_instrctor($count,$result){
+       $data=new Result();
+       $total=0;
+        if($rs=mysql_fetch_array($count)){         
+              $total=$rs[0];             
+          }else{        
+              $total=0;        
+          }
+        $arrs =array();
+        while($row = mysql_fetch_array($result)){
+           foreach ($row as $key => $value) {
+               $row[$key]=urlencode($value);
+           }
+           $arrs[]=$row;
+        }
+       $data->arr=$arrs;
+       $data->totalpage=$total;
+       return $data;
+    }
 
    if(isset($_POST['name'])){
+      $data=new Result();
       $name=$_POST['name'];
       $search=$_POST['search'];
+      $str=implode(",",$name['arr']);
+    // $str="1,2";
+    // $num1=0;$num2=10;
        if($search==""){
-             $datas = $database->select("t_close",
-                ["[>]t_source" =>"source_id","[>]t_classify" =>"classify_id"],
-                "*",
-                ["classify_id" =>$name['arr'],"LIMIT" => [$name['pagenum'], $name['pagesize']]]
-              );
-             $count = $database->count("t_close",
-                ["[>]t_source" =>"source_id","[>]t_classify" =>"classify_id"],
-                "*",
-                ["classify_id" =>$name['arr']]
-             );
-             $data->arr=$datas;
-             $data->totalpage=$count;
+              $result = mysql_query("select * from t_close a,t_source b,t_classify c 
+                where 
+                a.source_id=b.source_id and 
+                a.classify_id=c.classify_id and 
+                a.classify_id in (".$str.") 
+                limit ".$name['pagenum'].",".$name['pagesize']
+                );
+              $count = mysql_query("select count(*) from t_close a,t_source b,t_classify c 
+                where 
+                a.source_id=b.source_id and 
+                a.classify_id=c.classify_id and 
+                a.classify_id in (".$str.")"    
+                );
+
+              $data=data_instrctor($count,$result);
+              echo urldecode(json_encode($data));
        }else{
-            $datas = $database->select("t_close",
-                ["[>]t_source" =>"source_id","[>]t_classify" =>"classify_id"],
-                "*",
-                [
-                   "AND" => ["classify_id" =>$name['arr'],"close_name[~]"=>$search],
-                   "LIMIT" => [$name['pagenum'], $name['pagesize']]
-                ]
-            );
-            $count = $database->count("t_close",
-                ["[>]t_source" =>"source_id","[>]t_classify" =>"classify_id"],
-                "*",
-                ["AND" => ["classify_id" =>$name['arr'],"close_name[~]"=>"aa"]]
-            );
-            $data->arr=$datas;
-            $data->totalpage=$count;
+               $search=$_POST["search"];
+              $result = mysql_query("select * from t_close a,t_source b,t_classify c 
+                where 
+                a.source_id=b.source_id and 
+                a.classify_id=c.classify_id and 
+                a.classify_id in (".$str.") and 
+                a.close_name like '%".$search."%' 
+                limit ".$name['pagenum'].",".$name['pagesize']
+                );
+
+              $count = mysql_query("select count(*) from t_close a,t_source b,t_classify c 
+                where 
+                a.source_id=b.source_id and 
+                a.classify_id=c.classify_id and 
+                a.classify_id in (".$str.")"    
+                );
+              $data=data_instrctor($count,$result);
+              echo urldecode(json_encode($data));
        }
-       echo json_encode(json_encode($data));
    }
    if(isset($_POST['delete_id'])){
         $delete_id=$_POST['delete_id'];
-        $datas=$database->delete("t_close",[
-            "close_id"=>$delete_id
-        ]);
-        echo json_encode($datas);
+        $del = mysql_query("delete from t_close where close_id=".$delete_id);
    }
 
 

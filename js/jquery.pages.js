@@ -61,7 +61,8 @@
         	}
 
         	function initPage(){
-        		if(_option.pageNum == 1){
+        		if(_option.pageNum == 1|| _option.pageNum == 0){
+        			
         			var _str = '<li class="prev disabled"><a href="javascript:;" data-num="1" title="首页"><i class="fa fa-backward"></i></a></li>'
 								+'<li class="prev disabled"><a href="javascript:;" data-num="' + (_option.pageNum - 1) +'" title="上一页"><i class="fa fa-caret-left"></i></a></li>';
         		}else{

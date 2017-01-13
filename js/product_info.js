@@ -4,9 +4,7 @@
         $('.select').val()==0?arr=[1,2,3]:arr=[$('.select').val()];
         var param={pagenum:0,pagesize:10,arr:arr};
         $.post('php/product_info.php',{name:param,search:""},function(data){
-            console.log(JSON.parse(data));
-            var data=JSON.parse(JSON.parse(data))
-            console.log(data);
+            var data=JSON.parse(data);
             var page_size=10;
             var flag=true;
             var sort_list=['close_id','close_name',"source_name","cost_price","sale_price","color","size","classify_name"];
@@ -14,7 +12,7 @@
             var tabdata={}
             tabdata['pageNum']=1;//当前页
             tabdata['pageCount'] = page_size;
-            tabdata['totalPage'] = data.totalpage;
+            tabdata['totalPage'] = data.totalpage==0?1:data.totalpage;
             tabdata['totalShow']='每页显示'+page_size+'条';
             var tdList=[];
             productInfo.setTabData(tabdata,thList,data.arr,flag,sort_list);
@@ -77,14 +75,14 @@
         var param={pagenum:pageNum,pagesize:page_size,arr:arr}
         var search=$('#productInfo').find('[data-action="closename"]').val()
        $.post('php/product_info.php',{name:param,search:search},function(data){
-            var data=JSON.parse(JSON.parse(data))
+            var data=JSON.parse(data);
             var flag=true;
             var sort_list=['close_id','close_name',"source_name","cost_price","sale_price","color","size","classify_name"];
             var thList=['服装ID','服装名称','商品源','进价','建议零售价','颜色','型号','服装类型','操作'];
             var tabdata={}
             tabdata['pageNum']=pageNum/10+1;//当前页
             tabdata['pageCount'] = page_size;
-            tabdata['totalPage'] = data.totalpage;
+            tabdata['totalPage'] = data.totalpage==0?1:data.totalpage;
             tabdata['totalShow']='每页显示'+page_size+'条';
             var tdList=[];
             productInfo.setTabData(tabdata,thList,data.arr,flag,sort_list);
@@ -124,14 +122,13 @@
         var modalLocation = dom.attr('data-reveal-id');
         $('#'+modalLocation).reveal(dom.data());
     },
-     delete_data:function(){
+    delete_data:function(){
          $('#productInfo').find('[data-action="delete"]').click(function(e){
              var id=$(this).attr('data-id')
              e.preventDefault();
              productInfo.dialog_init(true,$(this));
              $('.yes').click(function(){
                  $.post('php/product_info.php',{delete_id:id},function(data){
-                     var data=JSON.parse(JSON.parse(data))
                      productInfo.reset_table(0,$('[data-node="length"]').val())
                  })
 
