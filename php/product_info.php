@@ -1,14 +1,10 @@
 <?php
-header("Content-type: text/html; charset=utf-8");
-    
-
     header("Content-type: text/html; charset=UTF-8");
     $con = mysql_connect("localhost","root","","cdms");
     if (!$con){
       die('Could not connect:' . mysql_error());
     }
     mysql_select_db("cdms", $con);
-
    class Result{
         public $totalpage='0';
         public $arr=array();
@@ -38,8 +34,6 @@ header("Content-type: text/html; charset=utf-8");
       $name=$_POST['name'];
       $search=$_POST['search'];
       $str=implode(",",$name['arr']);
-    // $str="1,2";
-    // $num1=0;$num2=10;
        if($search==""){
               $result = mysql_query("select * from t_close a,t_source b,t_classify c 
                 where 
@@ -82,8 +76,6 @@ header("Content-type: text/html; charset=utf-8");
         $delete_id=$_POST['delete_id'];
         $del = mysql_query("delete from t_close where close_id=".$delete_id);
    }
-
-
 
 
 

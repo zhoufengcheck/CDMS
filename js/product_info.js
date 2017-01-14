@@ -139,9 +139,9 @@
 
  $(function () {
  	productInfo.init_table();
-     productInfo.search();
-     productInfo.tab_operate();
+    productInfo.search();
  	productSource.init_table();
+ 	productSource.search();
     $('.select').chosen({
         width:"150px",
         disable_search:true
