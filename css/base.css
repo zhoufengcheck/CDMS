@@ -60,10 +60,14 @@ form .form-group{width: 50%;margin: 30px auto}
 form .form-group label{font-weight: normal; width: 18%;color: #444;float: left;line-height: 30px;}
 form .form-group .form-control{width: 70%;box-shadow: none;display: inline-block;}
 form .form-group input[type="checkbox"]{width: 20px;height: 20px}
+
 .red {color: red;}
-.btn{display:block;width: 100px;height: 35px;line-height: 35px;color: white;border-radius: 2px;text-align: center;}
+.btns{display:block;padding: 0 10px;height: 30px;line-height: 30px;color: white;border-radius: 2px;text-align: center;float: left;font-size: 12px;margin-right: 20px;cursor: pointer;}
 .btn:hover{background-color:#6b98d6;color: white !important;}
 .bg1{background-color: #4F84CE}
 .glyphicon-plus:before{font-size: 12px;}
 .pageBtns {padding-top: 70px;text-align: center;}
 .pageBtns .btn{text-align: center;margin-right: 30px;min-width: 70px;font-size: 14px;}
+
+
+.chosen-container-single .chosen-drop ul.chosen-results{margin-bottom: 0px}

@@ -12,7 +12,6 @@
 .main .contentBox .tab-pane .search select{width: 100px;height: 30px;float: left;margin-right: 10px;border-color: #ddd;}
 .main .contentBox .tab-pane .chosen-container{float: left;margin-right: 10px;height: 30px;font-size: 14px !important;}
 .main .contentBox .tab-pane .chosen-container-single .chosen-drop{width: 150px}
-.main .contentBox .tab-pane .chosen-container-single .chosen-drop ul.chosen-results{margin-bottom: 0px}
 .main .contentBox .tab-pane .search .input-group{width: 220px;float: left;margin-right: 10px;height: 30px;}
 .main .contentBox .tab-pane .search .input-group .form-control{height: 30px;box-shadow:none;border-color: #ddd;}
 .main .contentBox .tab-pane .search button{cursor: pointer;width: 60px;height: 30px;float: left;background-color: #3d689b;border: none;color:#fff;font-size: 14px;outline: none;}

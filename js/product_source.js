@@ -3,6 +3,7 @@
         var param={pagenum:0,pagesize:10};
         $.post('php/product_source.php',{source:param,searchs:""},function(data){
             var data=JSON.parse(data);
+            console.log(data);
             var page_size=10;
             var flag=true;
             var sort_list=['source_id','source_name','address','tel'];
@@ -13,15 +14,17 @@
             tabdata['totalPage'] = data.totalpage==0?1:data.totalpage;
             tabdata['totalShow']='每页显示'+page_size+'条';
             var tdList=[];
-            productInfo.setTabData(tabdata,thList,data.arr,flag,sort_list);
+            productSource.setTabData(tabdata,thList,data.arr,flag,sort_list);
             $('#productSource .tab').table(tabdata);
-//          $('ul.pagination li').not('.disabled').find('a').click(function(){
-//              productInfo.reset_table(($(this).attr('data-num')-1)*10,$('[data-node="length"]').val())
-//          })
-//          $('[data-node="length"]').change(function(){
-//              productInfo.reset_table(0,$('[data-node="length"]').val())
-//          })
-//          productInfo.delete_data()
+            $('#productSource').find('ul.pagination li').not('.disabled').find('a').click(function(){
+            	var length= $('#productSource').find('[data-node="length"]').val()
+                productSource.reset_table(($(this).attr('data-num')-1)*10,length)
+            })
+            $('#productSource').find('[data-node="length"]').change(function(){
+            	var length= $('#productSource').find('[data-node="length"]').val()
+                productSource.reset_table(0,$('[data-node="length"]').val())
+            })
+            productSource.delete_data()
         });
  	},
  	setTabData:function(data,thList,tdList,flag,sort_list){
@@ -49,9 +52,9 @@
                 
             }
             if(flag==true){
-                var href='<a href="javascript:;" data-action="check" data-id='+tdList[i]["close_id"]+' >查看</a>';
-                href=href+'<a href="javascript:;" data-reveal-id="myModal" data-action="delete" data-id='+tdList[i]["close_id"]+' >删除</a>';
-                href=href+'<a href="javascript:;" data-action="edit"  data-id='+tdList[i]["close_id"]+' >编辑</a>';
+                var href='<a href="javascript:;" data-action="check" data-id='+tdList[i]["source_id"]+'>查看</a>';
+                href=href+'<a href="javascript:;" data-reveal-id="myModal" data-action="delete" data-id='+tdList[i]["source_id"]+' >删除</a>';
+                href=href+'<a href="javascript:;" data-action="edit"  data-id='+tdList[i]["source_id"]+' >编辑</a>';
                 
                 var hreftd ={
                     content: href,
@@ -83,19 +86,54 @@
             var tdList=[];
             productInfo.setTabData(tabdata,thList,data.arr,flag,sort_list);
             $('#productSource .tab').table(tabdata);
-//          $('ul.pagination li').not('.disabled').find('a').click(function(){
-//              productInfo.reset_table(($(this).attr('data-num')-1)*10,$('[data-node="length"]').val())
-//          })
-//         $('[data-node="length"]').change(function(){
-//             productInfo.reset_table(0,$('[data-node="length"]').val())
-//         })
-//         productInfo.delete_data()
+            $('#productSource').find('ul.pagination li').not('.disabled').find('a').click(function(){
+            	var length= $('#productSource').find('[data-node="length"]').val()
+                productSource.reset_table(($(this).attr('data-num')-1)*10,length)
+            })
+       		$('#productSource').find('[data-node="length"]').change(function(){
+	            var length= $('#productSource').find('[data-node="length"]').val()
+				console.log(length);
+            	productSource.reset_table(0,length)
+         	})
+           productSource.delete_data()
         });     
     },
   	search:function(){
         $('#productSource').find('[data-action="search"]').click(function(){	
           	productSource.reset_table(0,10);
         })
+   	},
+   	delete_data:function(){
+         $('#productSource').find('[data-action="delete"]').click(function(e){
+             var id=$(this).attr('data-id')
+             e.preventDefault();
+             productSource.dialog_init(true,$(this));
+             $('.yes').click(function(){
+                 $.post('php/product_source.php',{source_id:id},function(data){
+                     var length= $('#productSource').find('[data-node="length"]').val()
+                     productSource.reset_table(0,length);
+                 })
+
+             })
+         })
+    },
+    dialog_init:function(bool,dom){
+        $('#myModal').empty();
+        if(bool){
+          $mess= $('<p>您确定要删除这条信息?</p>')
+            $yes=$('<span class="yes">确定</span>');
+            $no=$('<span class="no">取消</span>');
+            $('#myModal').append($mess);
+          $('#myModal').append($yes);
+            $('#myModal').append($no);
+        }else{
+            $mess= $('<p>删除成功</p>')
+            $yes=$('<span class="yes">确定</span>');
+            $('#myModal').append($mess);
+            $('#myModal').append($yes);
+        }
+        var modalLocation = dom.attr('data-reveal-id');
+        $('#'+modalLocation).reveal(dom.data());
     }
  }
 
