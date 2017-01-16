@@ -15,7 +15,7 @@ a{text-decoration: none;}
 a:hover{text-decoration: none;}
 /*.hide{display: none!important;}*/
 .fontArialMT{font-family:'ArialMT'}
-
+.hide{opacity: 0}
 
 .main{width: 100%;height: 100%;}
 /******************.main .header**********************/
@@ -56,13 +56,12 @@ a:hover{text-decoration: none;}
 
 
 form {display: block;margin-top: 0em;}
-form .form-group{width: 50%;margin: 30px auto}
+form .form-group{width: 60%;margin: 30px auto;}
 form .form-group label{font-weight: normal; width: 18%;color: #444;float: left;line-height: 30px;}
-form .form-group .form-control{width: 70%;box-shadow: none;display: inline-block;}
-form .form-group input[type="checkbox"]{width: 20px;height: 20px}
+form .form-group .form-control{width: 57%;box-shadow: none;display: inline-block;}
 
 .red {color: red;}
-.btns{display:block;padding: 0 10px;height: 30px;line-height: 30px;color: white;border-radius: 2px;text-align: center;float: left;font-size: 12px;margin-right: 20px;cursor: pointer;}
+.btns{display:inline-block;padding: 0 10px;height: 30px;line-height: 30px;color: white;border-radius: 2px;text-align: center;float: left;font-size: 12px;margin-right: 20px;cursor: pointer;}
 .btn:hover{background-color:#6b98d6;color: white !important;}
 .bg1{background-color: #4F84CE}
 .glyphicon-plus:before{font-size: 12px;}
@@ -71,3 +70,12 @@ form .form-group input[type="checkbox"]{width: 20px;height: 20px}
 
 
 .chosen-container-single .chosen-drop ul.chosen-results{margin-bottom: 0px}
+
+.upload{position: relative;width: 60%;display: inline-block;}
+.upload input{display:block;position: absolute;opacity: 0;height: 30px;width:100px;top: 0;left: 0;cursor: pointer;}
+
+#preview{width:260px;height:190px;overflow:hidden;float: left}
+#imghead {filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);}
+
+.open > .dropdown-toggle.btn-default {background-color:#fff !important}
+.error{font-size: 13px;margin-top: 10px;}

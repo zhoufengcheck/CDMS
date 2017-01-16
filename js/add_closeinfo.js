@@ -1,19 +1,26 @@
 var Add_close_Info={
-	add_info:function(){
-		var info={};
-		info['close_name']=$('#close_name').val();
-		info['source_id']=$('#source_id').val();
-		info['close_price']=$('#close_price').val();
-		info['sale_price']=$('#sale_price').val();
-		info['close_price']=$('#close_price').val();
-		info['color']=$('#color').val();
-		info['size']=$('#size').val();
-		info['describle']=$('#describle').val();
-		info['classify_id']=$('#classify_id').val();
-		info['img_path']=$('#img_path').val();
+	form_test:function(){
+		var flag=true;
+		var close_name=$('#close_name').val();
+		var source_id=$('#source_id').val()
+		var source_id=$('#source_id').val()
+		var color=$('#color').val()
+		if(close_name==""){
+			$('#close_name').siblings('span').removeClass('hide');
+			flag=false;			
+		}
+		if(source_id==""){
+			$('#source_id').siblings('span').removeClass('hide');
+			flag=false;	
+		}
+		if(color==""){
+			$('#color').siblings('span').removeClass('hide');
+			flag=false;	
+		}
+		return flag;
 	},
 	init_select:function(){
-		$.get('php/add_closeinfo.php',function(data){
+		$.post('php/add_closeinfo.php',{flag:"1"},function(data){
 			var data=JSON.parse(data);
 			console.log(data)
 			var option_source=""
@@ -38,7 +45,13 @@ var Add_close_Info={
 }
 
 $(function(){
-
+	 $('.selectpicker').selectpicker({
+	        'selectedText': 'cat'
+	    });
+	 $('[data-action="save"]').click(function(){
+	 	var flag=Add_close_Info.form_test();
+	 	return flag;
+	 })
     Add_close_Info.init_select();
 })
 
