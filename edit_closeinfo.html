@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>添加服装信息</title>
+	<title>编辑服装信息</title>
 	<!--base.html-->
     <link rel="stylesheet" href="css/base.css"/>
     <!-- boot -->
@@ -40,7 +40,7 @@
 				<span>添加服装信息</span>
 			</div>
 			<div class="messageBox">
-				<form action="php/add_closeinfo.php" role="form" method="post" enctype="multipart/form-data" data-status="add" id="close_form">
+				<form action="php/add_closeinfo.php" role="form" method="post" enctype="multipart/form-data" data-status="edit" id="close_form">
 					<div class="form-group">
 					    <label for="name">服装名称<span class="red">*</span></label>
 					    <input type="text" class="form-control" name="close_name" id="close_name" placeholder="请输入名称">
@@ -71,9 +71,9 @@
 					    <label for="id_select">服装型号<span class="red">*</span></label>
 					   <select id="id_select" class="selectpicker bla bla bli" multiple="multiple" data-live-search="true" name="size[]">
 						    <option value="XL">XL</option>
-						    <option value="XL">L</option>
-						    <option value="XL">M</option>
-						    <option value="XL">S</option>
+						    <option value="L">L</option>
+						    <option value="M">M</option>
+						    <option value="S">S</option>
 					    </optgroup>
 					  </select>
 					</div>

@@ -25,7 +25,7 @@
             	var length= $('#productInfo').find('[data-node="length"]').val();
                 productInfo.reset_table(0,length);
             })
-            productInfo.delete_data()
+            productInfo.oper_data()
         });
 
  	},
@@ -97,7 +97,7 @@
            		var length= $('#productInfo').find('[data-node="length"]').val()
                	productInfo.reset_table(0,length);
            })
-           productInfo.delete_data()
+           productInfo.oper_data()
         });     
     },
     search:function(){
@@ -128,7 +128,7 @@
         var modalLocation = dom.attr('data-reveal-id');
         $('#'+modalLocation).reveal(dom.data());
     },
-    delete_data:function(){
+    oper_data:function(){
          $('#productInfo').find('[data-action="delete"]').click(function(e){
              var id=$(this).attr('data-id')
              e.preventDefault();
@@ -140,6 +140,11 @@
                  })
 
              })
+         })
+          $('#productInfo').find('[data-action="edit"]').click(function(e){
+             var id=$(this).attr('data-id')
+             e.preventDefault();
+             location.href = "http://localhost/CDMS/edit_closeinfo.html?close_id="+id;
          })
     },
  	add_info:function(){

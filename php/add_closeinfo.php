@@ -37,7 +37,9 @@
       $sale_price=$_POST["sale_price"];
       $source_id=$_POST["source_id"];
       $color=$_POST["color"];
-      $size=$_POST["size"];
+      $size_arr=array();
+      $size_arr=$_POST["size"];
+      $size=implode(",",$size_arr);
       $classify_id=$_POST["classify_id"];
       $describle=$_POST["describle"];
       $img_path="";
@@ -60,7 +62,7 @@
           $sql="insert into t_close (close_name,source_id,cost_price,sale_price,color,size,describle,classify_id,img_path)values
           ('$close_name','$source_id','$cost_price','$sale_price','$color','$size','$describle','$classify_id','$img_path')";
           $add_info=mysql_query($sql);
-          echo '<script>location.href="http://localhost/CDMS/index.html"</script>';
+          // echo '<script>location.href="http://localhost/CDMS/index.html"</script>';
         }
     }
   
