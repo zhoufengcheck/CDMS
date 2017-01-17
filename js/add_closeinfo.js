@@ -1,10 +1,26 @@
-
+var all_size=["S","M","L","XL"];
 function getQueryString(name) {
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
 	var r = window.location.search.substr(1).match(reg);
 	if (r != null) return unescape(r[2]); 
 	return null;
 } 
+function init_multiSelect(size){
+	var result='<select id="id_select" class="selectpicker bla bla bli" multiple="multiple" data-live-search="true" name="size[]">';
+	for(var i=0;i<all_size.length;i++){
+		var option="<option>"+all_size[i]+"</option>"
+		for(var j=0;j<size.length;j++){
+			if (all_size[i]==size[j]){
+				option="<option selected>"+all_size[i]+"</option>"
+			}
+		}
+		result=result+option;
+
+	}
+	result=result+"</optgroup></select>";
+	$('#id_select').html(result)
+	console.log(result);
+}
 var Add_close_Info={
 	is_valid:function(value,dom){
 		if(value==""){
@@ -32,7 +48,6 @@ var Add_close_Info={
 		if(close_name==""||color==""||describle==""||file==""||cost_price==""||sale_price==""){
 			flag=false;
 		}
-
 		return flag;
 	},
 	init_select:function(){
@@ -48,13 +63,14 @@ var Add_close_Info={
 			}
 			$('[data-action="source-select"]').html(option_source);
 			$('[data-action="classify-select"]').html(option_classify);
-			
-			$('[data-action="source-select"]').chosen({
-		        width:"150px"
-		    });
-		    $('[data-action="classify-select"]').chosen({
-		        width:"130px"
-		    });
+			if($('#close_form').attr('data-status')!="edit"){
+				$('[data-action="source-select"]').chosen({
+			        width:"150px"
+			    });
+			    $('[data-action="classify-select"]').chosen({
+			        width:"130px"
+			    });
+			}
 		})
 	},
 	//主要用于编辑信息是使用
@@ -64,19 +80,31 @@ var Add_close_Info={
 			var data=JSON.parse(data);
 			var size= new Array(); //定义一数组
 			size=data[0].size.split(",") 
-
-			console.log(data)
-			console.log(size)
+			console.log(data);
 			$('#close_name').val(data[0].close_name);
 			$('#cost_price').val(data[0].cost_price);
 			$('#sale_price').val(data[0].sale_price);
 			$('#color').val(data[0].color);
 			$('#describle').val(data[0].describle);
-			// for(var i=0;i<size.length;i++){
-			// 	$('#id_select>option:eq('+i+')').attr("selected",'true');
-			// }
-
-			$('#id_select>option:eq(0)').get(0).selected=true;
+			$('#source_id option').each(function(i,v){
+				if($(v).attr('value')==data[0].source_id){
+					$(v).attr('selected',true);
+				}
+			});
+			$('#classify_id option').each(function(i,v){
+				if($(v).attr('value')==data[0].classify_id){
+					$(v).attr('selected',true);
+				}
+			});
+			$('[data-action="source-select"]').chosen({
+			        width:"150px"
+			    });
+		    $('[data-action="classify-select"]').chosen({
+		        width:"130px"
+		    });
+		   $('[role="menu"]>li').addClass('selected')
+			init_multiSelect(size);
+			$('.filter-option ').html('S,M,L,XL');
 		})
 	}
 }
@@ -86,7 +114,7 @@ $(function(){
 	 $('.selectpicker').selectpicker({
 	        'selectedText': 'cat'
 	  });
-	  if($('#close_form').attr('data-status')=="edit"){
+	 if($('#close_form').attr('data-status')=="edit"){
 	 	Add_close_Info.form_edit();
 	 }
 	 $('[data-action="save"]').click(function(){
