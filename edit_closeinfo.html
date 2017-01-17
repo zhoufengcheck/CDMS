@@ -8,7 +8,7 @@
     <!-- boot -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="css/bootstrap-select.css">
+    <link rel="stylesheet" href="css/multiple-select.css">
      <!-- index -->
     <link rel="stylesheet" href="css/chosen.css"/>
 	<link rel="stylesheet" href="css/edit_proinfo.css"/>
@@ -68,14 +68,13 @@
 					    <span class="red error hide">请输入服装颜色</span>
 					</div>
 					<div class="form-group">
-					    <label for="id_select">服装型号<span class="red">*</span></label>
-					   <select id="id_select" class="selectpicker bla bla bli" multiple="multiple" data-live-search="true" name="size[]">
-						    <option value="XL">XL</option>
+					    <label for="size">服装型号<span class="red">*</span></label>
+  						<select id="size" multiple="multiple" name="size">
 						    <option value="L">L</option>
 						    <option value="M">M</option>
 						    <option value="S">S</option>
-					    </optgroup>
-					  </select>
+						    <option value="XL">XL</option>
+					  	</select>
 					</div>
 					<div class="form-group">
 					    <label for="name">服装类型<span class="red">*</span></label>
@@ -96,9 +95,7 @@
 							    <img id="imghead" width=100% height=auto border=0 src='image/upload.png'>
 							</div>
 							 <span class="red error hide">请上传服装图片</span>
-						 </div>
-						
-						   
+						 </div>		   
 					</div>
 					<div id="pageBtns" class="pageBtns">
 						<button class="btn btn-xs btn-primary no-text-shadow" data-action="cancel">取消</button>
@@ -111,8 +108,8 @@
 	</div>
     <script src='js/jquery-3.0.0.js'></script>
     <script src='js/bootstrap.js'></script>
-     <script src='js/bootstrap-select.js'></script>
     <script src='js/chosen.jquery.min.js'></script>
+    <script src='js/multiple-select.js'></script>
     <script src='js/pic_upload.js'></script>
     <script src='js/add_closeinfo.js'></script>
 </body>

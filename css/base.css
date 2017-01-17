@@ -79,3 +79,4 @@ form .form-group .form-control{width: 57%;box-shadow: none;display: inline-block
 
 .open > .dropdown-toggle.btn-default {background-color:#fff !important}
 .error{font-size: 13px;margin-top: 10px;}
+.ms-drop ul > li{width: 100%;height: 30px;float: left;}

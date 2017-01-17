@@ -5,22 +5,6 @@ function getQueryString(name) {
 	if (r != null) return unescape(r[2]); 
 	return null;
 } 
-function init_multiSelect(size){
-	var result='<select id="id_select" class="selectpicker bla bla bli" multiple="multiple" data-live-search="true" name="size[]">';
-	for(var i=0;i<all_size.length;i++){
-		var option="<option>"+all_size[i]+"</option>"
-		for(var j=0;j<size.length;j++){
-			if (all_size[i]==size[j]){
-				option="<option selected>"+all_size[i]+"</option>"
-			}
-		}
-		result=result+option;
-
-	}
-	result=result+"</optgroup></select>";
-	$('#id_select').html(result)
-	console.log(result);
-}
 var Add_close_Info={
 	is_valid:function(value,dom){
 		if(value==""){
@@ -61,8 +45,13 @@ var Add_close_Info={
 			for(var i=0;i<data.arrs_classify.length;i++){
 				option_classify=option_classify+'<option label="'+data.arrs_classify[i]["classify_name"]+'" value="'+data.arrs_classify[i]["classify_id"]+'">'+data.arrs_classify[i]["classify_name"]+'</option>'
 			}
+			 $('#size').change(function() {
+	        }).multipleSelect({
+	            width: "150px"
+	        });
 			$('[data-action="source-select"]').html(option_source);
 			$('[data-action="classify-select"]').html(option_classify);
+			
 			if($('#close_form').attr('data-status')!="edit"){
 				$('[data-action="source-select"]').chosen({
 			        width:"150px"
@@ -86,6 +75,12 @@ var Add_close_Info={
 			$('#sale_price').val(data[0].sale_price);
 			$('#color').val(data[0].color);
 			$('#describle').val(data[0].describle);
+			$('#size').val(size);
+			 $('#size').change(function() {
+	        }).multipleSelect({
+	            width: "150px"
+	        });
+
 			$('#source_id option').each(function(i,v){
 				if($(v).attr('value')==data[0].source_id){
 					$(v).attr('selected',true);
@@ -102,18 +97,16 @@ var Add_close_Info={
 		    $('[data-action="classify-select"]').chosen({
 		        width:"130px"
 		    });
-		   $('[role="menu"]>li').addClass('selected')
-			init_multiSelect(size);
-			$('.filter-option ').html('S,M,L,XL');
+			
 		})
 	}
 }
 
 $(function(){
 	 Add_close_Info.init_select();
-	 $('.selectpicker').selectpicker({
-	        'selectedText': 'cat'
-	  });
+//	 $('.selectpicker').selectpicker({
+//	        'selectedText': 'cat'
+//	  });
 	 if($('#close_form').attr('data-status')=="edit"){
 	 	Add_close_Info.form_edit();
 	 }
