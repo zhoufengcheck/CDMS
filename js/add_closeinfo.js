@@ -1,28 +1,37 @@
 var Add_close_Info={
+	is_valid:function(value,dom){
+		if(value==""){
+			dom.siblings('span').removeClass('hide');		
+		}else{
+			dom.siblings('span').addClass('hide');		
+		}
+
+	},
 	form_test:function(){
 		var flag=true;
 		var close_name=$('#close_name').val();
-		var source_id=$('#source_id').val()
-		var source_id=$('#source_id').val()
 		var color=$('#color').val()
-		if(close_name==""){
-			$('#close_name').siblings('span').removeClass('hide');
-			flag=false;			
+		var describle=$('#describle').val()
+		var file=$('#file').val()
+		var cost_price=$('#cost_price').val()
+		var sale_price=$('#sale_price').val()	
+		Add_close_Info.is_valid(close_name,$('#close_name'));
+		Add_close_Info.is_valid(color,$('#color'));
+		Add_close_Info.is_valid(describle,$('#describle'));
+		Add_close_Info.is_valid(cost_price,$('#cost_price'));
+		Add_close_Info.is_valid(file,$('#file'));
+		Add_close_Info.is_valid(describle,$('#describle'));
+		Add_close_Info.is_valid(sale_price,$('#sale_price'));
+
+		if(close_name==""||color==""||describle==""||file==""||cost_price==""||sale_price==""){
+			flag=false;
 		}
-		if(source_id==""){
-			$('#source_id').siblings('span').removeClass('hide');
-			flag=false;	
-		}
-		if(color==""){
-			$('#color').siblings('span').removeClass('hide');
-			flag=false;	
-		}
+
 		return flag;
 	},
 	init_select:function(){
 		$.post('php/add_closeinfo.php',{flag:"1"},function(data){
 			var data=JSON.parse(data);
-			console.log(data)
 			var option_source=""
 			var option_classify=""
 			for(var i=0;i<data.arrs_source.length;i++){
@@ -50,7 +59,21 @@ $(function(){
 	    });
 	 $('[data-action="save"]').click(function(){
 	 	var flag=Add_close_Info.form_test();
-	 	return flag;
+	   	_im        	 = document.getElementById('imghead'),
+         im          = document.createElement('img');
+         im.src      = _im.src,
+         real_width  = im.width,
+         real_height = im.height;
+     	if(real_width>1000||real_height>1000){
+     		$('#imghead').parent().siblings('span').html('图片尺寸太大').removeClass('hide');
+     	}else{
+     		$('#imghead').parent().siblings('span').html('请上传服装图片').addClass('hide');
+     	}
+	 	return false;
+	 })
+	 $('[data-action="cancel"]').click(function(){
+	 	location.href = "http://localhost/CDMS/index.html";
+	 	return false;
 	 })
     Add_close_Info.init_select();
 })

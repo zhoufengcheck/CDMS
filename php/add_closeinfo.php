@@ -40,43 +40,28 @@
       $size=$_POST["size"];
       $classify_id=$_POST["classify_id"];
       $describle=$_POST["describle"];
-      
-      echo "close_name".$close_name;  
-      echo "cost_price".$cost_price;
-      echo "sale_price".$sale_price;  
-      echo "color".$color;
-       echo "source_id".$source_id;  
-      echo "classify_id".$classify_id;
-      echo "describle".$describle; 
-
-      if ((($_FILES["file"]["type"] == "image/gif")
+      $img_path="";
+      if (($_FILES["file"]["type"] == "image/gif")
         || ($_FILES["file"]["type"] == "image/jpeg")
-        || ($_FILES["file"]["type"] == "image/pjpeg"))
-        && ($_FILES["file"]["size"] < 20000))
-          {
-          if ($_FILES["file"]["error"] > 0)
-            {
+        || ($_FILES["file"]["type"] == "image/pjpeg")){
+          if($_FILES["file"]["error"] > 0){
             echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
             }
-          else
-            {
-            echo "Upload: " . $_FILES["file"]["name"] . "<br />";
-            echo "Type: " . $_FILES["file"]["type"] . "<br />";
-            echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-            echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
-
+          else{
+              $img_path=$_FILES["file"]["name"];         
               move_uploaded_file($_FILES["file"]["tmp_name"],
               "../image/" . $_FILES["file"]["name"]);
-              echo "Stored in: " . "image/" . $_FILES["file"]["name"];
             }
-          }
-        else
-          {
-          echo "图片太大";
-          } 
-      // echo $close_name;
-       // echo '<script>location.href="http://localhost/CDMS/index.html"</script>';
-    }
+       }
+      $flag1=$close_name==""||$cost_price==""||$sale_price==""||$cost_price==""||$source_id=="";
+      $flag2=$color==""||$size==""||$classify_id==""||$describle==""||$img_path=="";
        
-
+      if(!$flag1||!$flag2){
+          $sql="insert into t_close (close_name,source_id,cost_price,sale_price,color,size,describle,classify_id,img_path)values
+          ('$close_name','$source_id','$cost_price','$sale_price','$color','$size','$describle','$classify_id','$img_path')";
+          $add_info=mysql_query($sql);
+          echo '<script>location.href="http://localhost/CDMS/index.html"</script>';
+        }
+    }
+  
 ?>

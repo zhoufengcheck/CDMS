@@ -17,10 +17,6 @@
               var reader = new FileReader();
               reader.onload = function(evt){img.src = evt.target.result;}
               reader.readAsDataURL(file.files[0]);
-
-             console.log($(":file").val());
-             var file=document.getElementById('file')
-             console.log(getPath(file));
           }
           else //兼容IE
           {
@@ -33,7 +29,7 @@
             var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
             status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
             div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
-           console.log($('input["file"]').val());
+   
           }
          
         }

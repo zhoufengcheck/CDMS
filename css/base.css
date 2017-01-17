@@ -62,7 +62,7 @@ form .form-group .form-control{width: 57%;box-shadow: none;display: inline-block
 
 .red {color: red;}
 .btns{display:inline-block;padding: 0 10px;height: 30px;line-height: 30px;color: white;border-radius: 2px;text-align: center;float: left;font-size: 12px;margin-right: 20px;cursor: pointer;}
-.btn:hover{background-color:#6b98d6;color: white !important;}
+.btn:hover{background-color:#6b98d6;}
 .bg1{background-color: #4F84CE}
 .glyphicon-plus:before{font-size: 12px;}
 .pageBtns {padding-top: 70px;text-align: center;}
@@ -71,10 +71,10 @@ form .form-group .form-control{width: 57%;box-shadow: none;display: inline-block
 
 .chosen-container-single .chosen-drop ul.chosen-results{margin-bottom: 0px}
 
-.upload{position: relative;width: 60%;display: inline-block;}
+.upload{position: relative;width: 80%;display: inline-block;}
 .upload input{display:block;position: absolute;opacity: 0;height: 30px;width:100px;top: 0;left: 0;cursor: pointer;}
 
-#preview{width:260px;height:190px;overflow:hidden;float: left}
+#preview{width:260px;height:190px;overflow:hidden;float: left;margin-right: 10px;}
 #imghead {filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);}
 
 .open > .dropdown-toggle.btn-default {background-color:#fff !important}

@@ -44,60 +44,60 @@
 					<div class="form-group">
 					    <label for="name">服装名称<span class="red">*</span></label>
 					    <input type="text" class="form-control" name="close_name" id="close_name" placeholder="请输入名称">
-					    <span class="red error">服装名不能为空</span>
+					    <span class="red error hide">服装名不能为空</span>
 					</div>
 					<div class="form-group">
 					    <label for="name">服装进价<span class="red">*</span></label>
 					    <input type="number" class="form-control" id="cost_price" name="cost_price" placeholder="请输入进价价格(单位:元) " min="100" max="1000">
+					    <span class="red error hide">请输入进价</span>
 					</div>
 					<div class="form-group">
 					    <label for="name">建议零售价<span class="red">*</span></label>
 					    <input type="number" class="form-control" id="sale_price" name="sale_price"placeholder="请输入售价价格(单位:元)" min="100" max="1000">
+					    <span class="red error hide">请输入售价</span>
 					</div>
 					<div class="form-group">
 					    <label for="name">商品源<span class="red">*</span></label>
 					    <select  data-action="source-select" name="source_id" id="source_id">
 					    </select>
-					    <span class="red error hide">请选择商品源</span>
 					</div>
 					
 					<div class="form-group">
-					    <label for="name">服装颜色种类<span class="red">*</span></label>
+					    <label for="name">服装颜色<span class="red">*</span></label>
 					    <input type="text" class="form-control" id="color" placeholder="服装颜色种类" name="color">
-					    <span class="red error">请输入服装颜色</span>
+					    <span class="red error hide">请输入服装颜色</span>
 					</div>
 					<div class="form-group">
 					    <label for="id_select">服装型号<span class="red">*</span></label>
-					   <select id="id_select" class="selectpicker bla bla bli" multiple data-live-search="true" name="size">					
+					   <select id="id_select" class="selectpicker bla bla bli" multiple data-live-search="true" name="size">		
 						    <option>XL</option>
 						    <option>L</option>
 						    <option>M</option>
 						    <option selected>S</option>
 					    </optgroup>
 					  </select>
-					   <span class="red error">请选择服装型号</span>
 					</div>
 					<div class="form-group">
 					    <label for="name">服装类型<span class="red">*</span></label>
 					    <select data-action="classify-select" name="classify_id">
 					    </select>
-					    <span class="red error">请选择服装类型</span>
 					</div>
 					<div class="form-group">
 					    <label for="name">服装基本描述<span class="red">*</span></label>
-					    <textarea class="form-control" rows="3" placeholder="服装描述" name="describle"></textarea>
-					    <span class="red error">请填写服装基本描述</span>
+					    <textarea class="form-control" rows="3" placeholder="服装描述" name="describle" id="describle"></textarea>
+					    <span class="red error hide">请填写服装基本描述</span>
 					</div>
 					<div class="form-group">
 						 <label for="name">服装图片<span class="red">*</span></label>
 						 <div class="upload">
-						 	<span class="btns bg1"><i class="glyphicon glyphicon-plus"></i>上传图片</span>
-						 	<input type="file" onchange="previewImage(this)" id="file"/name="file"> 
+						 	<a class="btns bg1"><i class="glyphicon glyphicon-plus"></i>上传图片</a>
+						 	<input type="file" onchange="previewImage(this)" id="file" name="file"/> 
 						 	<div id="preview">
 							    <img id="imghead" width=100% height=auto border=0 src='image/upload.png'>
 							</div>
+							 <span class="red error hide">请上传服装图片</span>
 						 </div>
-						 <span class="red error">请上传服装图片</span>
+						
 						   
 					</div>
 					<div id="pageBtns" class="pageBtns">
