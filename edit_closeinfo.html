@@ -41,6 +41,8 @@
 			</div>
 			<div class="messageBox">
 				<form action="php/add_closeinfo.php" role="form" method="post" enctype="multipart/form-data" data-status="edit" id="close_form">
+					<input type="hidden" name="hidden" value="edit">
+					<input type="hidden" name="close_id" value="">
 					<div class="form-group">
 					    <label for="name">服装名称<span class="red">*</span></label>
 					    <input type="text" class="form-control" name="close_name" id="close_name" placeholder="请输入名称">
@@ -58,7 +60,7 @@
 					</div>
 					<div class="form-group">
 					    <label for="name">商品源<span class="red">*</span></label>
-					    <select  data-action="source-select" name="source_id" id="source_id">
+					    <select name="source_id" id="source_id">
 					    </select>
 					</div>
 					
@@ -69,16 +71,16 @@
 					</div>
 					<div class="form-group">
 					    <label for="size">服装型号<span class="red">*</span></label>
-  						<select id="size" multiple="multiple" name="size">
-						    <option value="L">L</option>
-						    <option value="M">M</option>
+  						<select id="size" multiple="multiple" name="size[]">
 						    <option value="S">S</option>
+						    <option value="M">M</option>
+						    <option value="L">L</option>    
 						    <option value="XL">XL</option>
 					  	</select>
 					</div>
 					<div class="form-group">
 					    <label for="name">服装类型<span class="red">*</span></label>
-					    <select data-action="classify-select" name="classify_id" id="classify_id">
+					    <select name="classify_id" id="classify_id">
 					    </select>
 					</div>
 					<div class="form-group">

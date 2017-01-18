@@ -32,6 +32,7 @@
        	$data->arrs_classify=$arr_classify;
       	echo urldecode(json_encode($data));
     }else{
+      $hidden=$_POST["hidden"];
       $close_name=$_POST["close_name"];
       $cost_price=$_POST["cost_price"];
       $sale_price=$_POST["sale_price"];
@@ -59,11 +60,21 @@
       $flag2=$color==""||$size==""||$classify_id==""||$describle==""||$img_path=="";
        
       if(!$flag1||!$flag2){
-          $sql="insert into t_close (close_name,source_id,cost_price,sale_price,color,size,describle,classify_id,img_path)values
-          ('$close_name','$source_id','$cost_price','$sale_price','$color','$size','$describle','$classify_id','$img_path')";
-          $add_info=mysql_query($sql);
-          // echo '<script>location.href="http://localhost/CDMS/index.html"</script>';
-        }
+          if($hidden=="add"){
+              $sql="insert into t_close (close_name,source_id,cost_price,sale_price,color,size,describle,classify_id,img_path)values
+              ('$close_name','$source_id','$cost_price','$sale_price','$color','$size','$describle','$classify_id','$img_path')";
+              $add_info=mysql_query($sql);
+              
+          }else{
+              $close_id=$_POST['close_id'];  
+              $sql="update t_close set 
+              close_name = '$close_name',source_id='$source_id',cost_price='$cost_price',sale_price='$sale_price',
+              color='$color',size='$size',describle='$describle',classify_id='$classify_id',img_path='$img_path'
+             WHERE close_id=".$close_id; 
+              $update_info=mysql_query($sql);  
+          }
+      }
+       echo '<script>location.href="http://localhost/CDMS/index.html"</script>';
     }
   
 ?>

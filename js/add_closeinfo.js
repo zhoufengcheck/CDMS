@@ -34,6 +34,7 @@ var Add_close_Info={
 		}
 		return flag;
 	},
+	//初始化下拉框
 	init_select:function(){
 		$.post('php/add_closeinfo.php',{flag:"1"},function(data){
 			var data=JSON.parse(data);
@@ -49,64 +50,62 @@ var Add_close_Info={
 	        }).multipleSelect({
 	            width: "150px"
 	        });
-			$('[data-action="source-select"]').html(option_source);
-			$('[data-action="classify-select"]').html(option_classify);
+			$('#source_id').html(option_source);
+			$('#classify_id').html(option_classify);
 			
 			if($('#close_form').attr('data-status')!="edit"){
-				$('[data-action="source-select"]').chosen({
-			        width:"150px"
-			    });
-			    $('[data-action="classify-select"]').chosen({
+				  $('#classify_id').chosen({
 			        width:"130px"
 			    });
+				$('#source_id').chosen({
+			        width:"150px"
+			    });
+			  
 			}
 		})
 	},
 	//主要用于编辑信息是使用
 	form_edit:function(){
 		var close_id=getQueryString('close_id');
+		$('form').find('[name="close_id"]').val(close_id);
 		$.post('php/edit_closeinfo.php',{close_id:close_id},function(data){
 			var data=JSON.parse(data);
 			var size= new Array(); //定义一数组
-			size=data[0].size.split(",") 
-			console.log(data);
+			size=data[0].size.split(",");//获取size
 			$('#close_name').val(data[0].close_name);
 			$('#cost_price').val(data[0].cost_price);
 			$('#sale_price').val(data[0].sale_price);
 			$('#color').val(data[0].color);
 			$('#describle').val(data[0].describle);
+
 			$('#size').val(size);
 			 $('#size').change(function() {
 	        }).multipleSelect({
 	            width: "150px"
 	        });
 
-			$('#source_id option').each(function(i,v){
+			$('#source_id>option').each(function(i,v){
 				if($(v).attr('value')==data[0].source_id){
 					$(v).attr('selected',true);
 				}
 			});
-			$('#classify_id option').each(function(i,v){
+			$('#classify_id>option').each(function(i,v){
 				if($(v).attr('value')==data[0].classify_id){
 					$(v).attr('selected',true);
 				}
 			});
-			$('[data-action="source-select"]').chosen({
+			$('#source_id').chosen({
 			        width:"150px"
 			    });
-		    $('[data-action="classify-select"]').chosen({
+		    $('#classify_id').chosen({
 		        width:"130px"
-		    });
-			
+		    });			
 		})
 	}
 }
 
 $(function(){
 	 Add_close_Info.init_select();
-//	 $('.selectpicker').selectpicker({
-//	        'selectedText': 'cat'
-//	  });
 	 if($('#close_form').attr('data-status')=="edit"){
 	 	Add_close_Info.form_edit();
 	 }
@@ -122,8 +121,7 @@ $(function(){
 	     	}else{
 	     		$('#imghead').parent().siblings('span').html('请上传服装图片').addClass('hide');
 	     	}
-	     	console.log($('#id_select').val());
-		 	return true;
+		 	return flag;
 	 })
 	 $('[data-action="cancel"]').click(function(){
 		 location.href = "http://localhost/CDMS/index.html";
