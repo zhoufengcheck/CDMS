@@ -51,7 +51,7 @@
                 
             }
             if(flag==true){
-                var href='<a href="javascript:;" data-action="check" data-id='+tdList[i]["source_id"]+'>查看</a>';
+                var href='<a href="check_source.html?source_id='+tdList[i]["source_id"]+'" target="_blank">查看</a>';
                 href=href+'<a href="javascript:;" data-reveal-id="myModal" data-action="delete" data-id='+tdList[i]["source_id"]+' >删除</a>';
                 href=href+'<a href="edit_source.html?source_id='+tdList[i]["source_id"]+'">编辑</a>';
                 

@@ -51,8 +51,8 @@ a:hover{text-decoration: none;}
 /************tab*********************/
 .main .contentBox .tab{width: 100%;margin-top: 20px;}
 
-.main .contentBox .tab .table-bordered > thead > tr > th{font-size: 14px;color: #444;border-bottom: none; font-weight: bold;}
-.main .contentBox .tab .table-bordered > tbody > tr > td{font-size: 12px;color: #333;}
+.main .contentBox .tab .table-bordered > thead > tr > th{font-size: 14px;color: #333;border-bottom: none; font-weight: bold;background-color: #fcfafa!important}
+.main .contentBox .tab .table-bordered > tbody > tr > td{font-size: 12px;color: #333;background-color: #fff!important}
 
 
 form {display: block;margin-top: 0em;}
