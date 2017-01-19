@@ -40,8 +40,7 @@
         }
         for(var i=0;i<tdList.length;i++){
             var td=[];
-            for(var j=0;j<sort_list.length;j++) {
-               
+            for(var j=0;j<sort_list.length;j++) {         
                 var td_opt = {
                     content: tdList[i][sort_list[j]],
                     isCenter: "",
@@ -54,7 +53,7 @@
             if(flag==true){
                 var href='<a href="javascript:;" data-action="check" data-id='+tdList[i]["source_id"]+'>查看</a>';
                 href=href+'<a href="javascript:;" data-reveal-id="myModal" data-action="delete" data-id='+tdList[i]["source_id"]+' >删除</a>';
-                href=href+'<a href="javascript:;" data-action="edit"  data-id='+tdList[i]["source_id"]+' >编辑</a>';
+                href=href+'<a href="edit_source.html?source_id='+tdList[i]["source_id"]+'">编辑</a>';
                 
                 var hreftd ={
                     content: href,

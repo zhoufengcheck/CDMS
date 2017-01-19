@@ -141,19 +141,13 @@
 
              })
          })
-    },
- 	add_info:function(){
- 		var url="index.html"
- 		location.href = "http://localhost/CDMS/add_closeinfo.html?url="+url;
- 	}
+    }
  }
 
  $(function () {
  	productInfo.init_table();
     productInfo.search();
-    $('#productInfo').find('[data-action="add"]').click(function(){
-    	productInfo.add_info();
-    })
+    
  	productSource.init_table();
  	productSource.search();
     $('.select').chosen({

@@ -61,7 +61,8 @@ form .form-group label{font-weight: normal; width: 18%;color: #444;float: left;l
 form .form-group .form-control{width: 57%;box-shadow: none;display: inline-block;}
 
 .red {color: red;}
-.btns{display:inline-block;padding: 0 10px;height: 30px;line-height: 30px;color: white;border-radius: 2px;text-align: center;float: left;font-size: 12px;margin-right: 20px;cursor: pointer;}
+.btns{display:inline-block;padding: 0 10px;height: 30px;line-height: 30px;color: white;border-radius: 2px;text-align: center;float: left;font-size: 12px;margin-right: 20px;cursor: pointer;text-decoration: none;}
+.btns:hover,.btns:focus{color: white;text-decoration: none; }
 .btn:hover{background-color:#6b98d6;}
 .bg1{background-color: #4F84CE}
 .glyphicon-plus:before{font-size: 12px;}

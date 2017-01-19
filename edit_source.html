@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>添加商品源信息</title>
+	<title>编辑商品源信息</title>
 	<!--base.html-->
     <link rel="stylesheet" href="css/base.css"/>
     <!-- boot -->
@@ -37,8 +37,9 @@
 				<span>添加商品源信息</span>
 			</div>
 			<div class="messageBox">
-				<form action="php/add_source.php" role="form" method="post" enctype="multipart/form-data" data-status="add" id="source_form">
-					<input type="hidden" name="hidden" value="add">
+				<form action="php/add_source.php" role="form" method="post" enctype="multipart/form-data" data-status="edit" id="source_form">
+					<input type="hidden" name="hidden" value="edit">
+					<input type="hidden" name="source_id" value="">
 					<div class="form-group">
 					    <label for="source_name">商品源名称<span class="red">*</span></label>
 					    <input type="text" class="form-control" name="source_name" id="source_name" placeholder="请输入商品源名称">
