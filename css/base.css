@@ -44,14 +44,14 @@ a:hover{text-decoration: none;}
 .pull-left .dataTables_length label .chosen-drop ul.chosen-results{width: 70px;padding: 0;}
 /***********分页样式*************/
 .pull-right .paging_bootstrap .pagination{float: right;margin: 0}
-.pull-right .paging_bootstrap .pagination>li>a{display: inline-block;height: 30px;padding: 0;width: 30px;text-align: center;line-height: 30px;border-radius: 2px !important;margin: 0 3px;font-size: 14px;color: #333;  }
+.pull-right .paging_bootstrap .pagination>li>a{display: inline-block;height: 30px;padding: 0;width: 30px;text-align: center;line-height: 30px;border-radius: 2px !important;margin: 0 3px;font-size: 14px;color: #333;}
 .pull-right .paging_bootstrap .pagination>li.active>a{border: none;color:#428bca;background-color: #ffffff}
 .pull-right .paging_bootstrap .pagination>li.disabled>a{background-color: #F9F9F9;border-color: #D9D9D9;z-index: auto;color: #999;}
 
 /************tab*********************/
 .main .contentBox .tab{width: 100%;margin-top: 20px;}
 
-.main .contentBox .tab .table-bordered > thead > tr > th{font-size: 13px;color: #444;border-bottom: none;}
+.main .contentBox .tab .table-bordered > thead > tr > th{font-size: 14px;color: #444;border-bottom: none; font-weight: bold;}
 .main .contentBox .tab .table-bordered > tbody > tr > td{font-size: 12px;color: #333;}
 
 
@@ -80,3 +80,4 @@ form .form-group .form-control{width: 57%;box-shadow: none;display: inline-block
 .open > .dropdown-toggle.btn-default {background-color:#fff !important}
 .error{font-size: 13px;margin-top: 10px;}
 .ms-drop ul > li{width: 100%;height: 30px;float: left;}
+.litter_tab{width: 700px !important;margin: 0 auto;}

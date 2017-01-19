@@ -54,9 +54,9 @@
                 
             }
             if(flag==true){
-                var href='<a href="javascript:;" data-action="check" data-id='+tdList[i]["close_id"]+' >查看</a>';
+                var href='<a href="check_classinfo.html?close_id='+tdList[i]["close_id"]+'" data-action="check" data-id='+tdList[i]["close_id"]+' target="_blank">查看</a>';
                 href=href+'<a href="javascript:;" data-reveal-id="myModal" data-action="delete" data-id='+tdList[i]["close_id"]+' >删除</a>';
-                href=href+'<a href="javascript:;" data-action="edit"  data-id='+tdList[i]["close_id"]+' >编辑</a>';
+                href=href+'<a href="edit_closeinfo.html?close_id='+tdList[i]["close_id"]+'" data-action="edit"  data-id='+tdList[i]["close_id"]+' >编辑</a>';
                 
                 var hreftd ={
                     content: href,
@@ -140,11 +140,6 @@
                  })
 
              })
-         })
-          $('#productInfo').find('[data-action="edit"]').click(function(e){
-             var id=$(this).attr('data-id')
-             e.preventDefault();
-             location.href = "http://localhost/CDMS/edit_closeinfo.html?close_id="+id;
          })
     },
  	add_info:function(){
