@@ -20,9 +20,10 @@
             	var length= $('#productSource').find('[data-node="length"]').val()
                 productSource.reset_table(($(this).attr('data-num')-1)*10,length)
             })
-            $('#productSource').find('[data-node="length"]').change(function(){
-            	var length= $('#productSource').find('[data-node="length"]').val()
-                productSource.reset_table(0,$('[data-node="length"]').val())
+            $('#productSource').find('[data-node="length"]').change(function(){   
+            	var length= $('#productSource').find('[data-node="length"]').val()         	
+                productSource.reset_table(0,length)
+                
             })
             productSource.delete_data()
         });
@@ -90,8 +91,7 @@
                 productSource.reset_table(($(this).attr('data-num')-1)*10,length)
             })
        		$('#productSource').find('[data-node="length"]').change(function(){
-	            var length= $('#productSource').find('[data-node="length"]').val()
-				console.log(length);
+	            var length= $('#productSource').find('[data-node="length"]').val();
             	productSource.reset_table(0,length)
          	})
            productSource.delete_data()

@@ -13,7 +13,7 @@ var check_closeinfo={
 		var close_id=getQueryString('close_id');
        $.post('php/edit_closeinfo.php',{close_id:close_id},function(data){
             var data=JSON.parse(data);
-            $('#close_name').html(data[0].close_name);
+            $('[data-title="close_name"]').html(data[0].close_name);
             console.log(data);
             var sort_list=['close_id','close_name',"source_name","cost_price","sale_price","color","size","classify_name","describle","img_path"];
           	var thList=['名字','信息']

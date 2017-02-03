@@ -38,8 +38,9 @@ var add_source={
 	form_edit:function(){
 		var source_id=getQueryString('source_id');
 		$('form').find('[name="source_id"]').val(source_id);
-		$.post('php/edit_source.php',{source_id:source_id},function(data){
+		$.post('php/edit_source.php',{source_id:source_id},function(data){		
 			var data=JSON.parse(data);
+			$('[data-title="source_name"]').html(data[0].source_name);
 			$('#source_name').val(data[0].source_name);
 			$('#address').val(data[0].address);
 			$('#tel').val(data[0].tel);

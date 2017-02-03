@@ -70,6 +70,8 @@ var Add_close_Info={
 		$('form').find('[name="close_id"]').val(close_id);
 		$.post('php/edit_closeinfo.php',{close_id:close_id},function(data){
 			var data=JSON.parse(data);
+			console.log(data)
+			$('[data-title="close_name"]').html(data[0].close_name);
 			var size= new Array(); //定义一数组
 			size=data[0].size.split(",");//获取size
 			$('#close_name').val(data[0].close_name);
@@ -77,7 +79,7 @@ var Add_close_Info={
 			$('#sale_price').val(data[0].sale_price);
 			$('#color').val(data[0].color);
 			$('#describle').val(data[0].describle);
-
+			$('#imghead').attr('src','image/'+data[0].img_path);
 			$('#size').val(size);
 			 $('#size').change(function() {
 	        }).multipleSelect({

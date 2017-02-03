@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>编辑商品源信息</title>
+	<title>编辑意见</title>
 	<!--base.html-->
     <link rel="stylesheet" href="css/base.css"/>
     <!-- boot -->
@@ -23,7 +23,7 @@
 				        <li><a href="index.html">商品管理</a></li>
 				        <li><a href="sell_condition.html">售卖情况</a></li>
 				        <li><a href="feedback.html">意见反馈</a></li>
-				      </ul>   
+				      </ul>
 				      <ul class="nav navbar-nav navbar-right">
 				        <li><a href="#" id="wele_user">欢迎grace</a></li>
 				        <li><a href="#" id="out">退出</a></li>
@@ -34,27 +34,27 @@
 		</div>
 		<div class="contentBox">
 			<div class="path">
-				<a href="index.html" data-title="source_name"></a>
-				<span>编辑商品源信息</span>
+				<a href="feedback.html" data-title="feed_name"></a>
+				<span>编辑意见</span>
 			</div>
 			<div class="messageBox">
-				<form action="php/add_source.php" role="form" method="post" enctype="multipart/form-data" data-status="edit" id="source_form">
+				<form action="php/add_feed.php" role="form" method="post" enctype="multipart/form-data" data-status="edit" id="feed_form">
 					<input type="hidden" name="hidden" value="edit">
-					<input type="hidden" name="source_id" value="">
+					<input type="hidden" name="feed_id" value="">
 					<div class="form-group">
-					    <label for="source_name">商品源名称<span class="red">*</span></label>
-					    <input type="text" class="form-control" name="source_name" id="source_name" placeholder="请输入商品源名称">
-					    <span class="red error hide">商品源不能为空</span>
+					    <label for="autor">意见提交者<span class="red">*</span></label>
+					    <input type="text" class="form-control" name="autor" id="autor" placeholder="意见提交者">
+					    <span class="red error hide">提交者不能为空</span>
 					</div>
 					<div class="form-group">   
-					     <label for="name">地址<span class="red">*</span></label>
-					    <input type="text" class="form-control" id="address" name="address"placeholder="请输入地址" >
-					    <span class="red error hide">商品源地址不能为空</span>
+					    <label for="date">提交日期<span class="red">*</span></label>
+					    <input type="text" class="form-control" id="date" name="date"  placeholder="2012/12/03">
+					    <span class="red error hide">提交日期</span>
 					</div>
 					<div class="form-group">
-					    <label for="name">电话号码<span class="red">*</span></label>
-					    <input type="text" class="form-control" id="tel" name="tel"placeholder="请输入电话号码" >
-					    <span class="red error hide">请输入电话号码</span>
+					    <label for="feed_content">意见内容<span class="red">*</span></label>
+					    <textarea class="form-control" rows="3" placeholder="意见内容" name="feed_content" id="feed_content"></textarea>
+					    <span class="red error hide">意见内容</span>
 					</div>
 					
 					<div id="pageBtns" class="pageBtns">
@@ -66,9 +66,9 @@
 		</div>
 		<div class="footer"></div>
 	</div>
- 	 <script src='js/jquery-3.0.0.js'></script>
- 	 <script src='js/bootstrap.js'></script>
-	<script src='js/add_source.js'></script>
+ 	<script src='js/jquery-3.0.0.js'></script>
+ 	<script src='js/bootstrap.js'></script>
+	<script src='js/add_feed.js'></script>
    
 </body>
 </html>

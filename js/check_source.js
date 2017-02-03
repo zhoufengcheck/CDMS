@@ -10,10 +10,9 @@ function getQueryString(name) {
 var check_source={
 	init_table:function(){
 		var source_id=getQueryString('source_id');
-        console.log(source_id);
        $.post('php/edit_source.php',{source_id:source_id},function(data){
             var data=JSON.parse(data);
-            $('#source_name').html(data[0].source_name);
+            $('[data-title="source_name"]').html(data[0].source_name);
             console.log(data);
             var sort_list=['source_id','source_name',"address","tel"];
           	var thList=['名字','信息']

@@ -23,9 +23,9 @@
 				    </div>
 				    <div class="collapse navbar-collapse">
 				      <ul class="nav navbar-nav">
-				        <li><a href="#">商品管理</a></li>
-				        <li><a href="#">售卖情况</a></li>
-				        <li><a href="#">意见反馈</a></li>
+				        <li><a href="index.html">商品管理</a></li>
+				        <li><a href="sell_condition.html">售卖情况</a></li>
+				        <li><a href="feedback.html">意见反馈</a></li>
 				      </ul>   
 				      <ul class="nav navbar-nav navbar-right">
 				        <li><a href="#" id="wele_user">欢迎grace</a></li>
@@ -37,10 +37,11 @@
 		</div>
 		<div class="contentBox">
 			<div class="path">
-				<span>添加服装信息</span>
+				<a href="index.html" data-title="close_name"></a>
+				<span>编辑服装信息</span>
 			</div>
 			<div class="messageBox">
-				<form action="php/add_closeinfo.php" role="form" method="post" enctype="multipart/form-data" data-status="edit" id="source_form">
+				<form action="php/add_closeinfo.php" role="form" method="post" enctype="multipart/form-data" data-status="edit" id="close_form">
 					<input type="hidden" name="hidden" value="edit">
 					<input type="hidden" name="close_id" value="">
 					<div class="form-group">
