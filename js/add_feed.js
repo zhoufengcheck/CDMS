@@ -1,7 +1,22 @@
 $(function(){
+	var d = new Date();
+	var today = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+	 $(".form_datetime input").val(today)
+	 $(".form_datetime").datetimepicker({
+        format: "yyyy-mm-dd",
+         autoclose: true,
+         startView:"month",
+         minView:"month",
+         language:  'zh',
+    });
+    $('.form_datetime').datetimepicker('setStartDate', '2016/01/01');
+    $(".form_datetime").datetimepicker("setEndDate",new Date());
+	
 	if($('#feed_form').attr('data-status')=='edit'){
  		add_feed.form_edit();
-	 }
+	}
+			
+	 
 	$('[data-action="save"]').click(function(){	
 	 	var flag=add_feed.submit();
 	 	return flag;

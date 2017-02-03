@@ -3,12 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>编辑意见</title>
-	<!--base.html-->
-    <link rel="stylesheet" href="css/base.css"/>
     <!-- boot -->
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css"/>
-     <!-- index -->
+    <!--base.html-->
+    <link rel="stylesheet" href="css/base.css"/>
 </head>
 <body>
 	<div class="main">
@@ -48,7 +48,11 @@
 					</div>
 					<div class="form-group">   
 					    <label for="date">提交日期<span class="red">*</span></label>
-					    <input type="text" class="form-control" id="date" name="date"  placeholder="2012/12/03">
+					    <div class="input-group date form_datetime">
+						  <input type="text" class="form-control" aria-describedby="basic-addon2" id="date" name="date" >
+						  <span class="input-group-addon" id="datetime_btn"><i class="glyphicon glyphicon-calendar"></i></span>
+						</div>
+					    
 					    <span class="red error hide">提交日期</span>
 					</div>
 					<div class="form-group">
@@ -68,6 +72,7 @@
 	</div>
  	<script src='js/jquery-3.0.0.js'></script>
  	<script src='js/bootstrap.js'></script>
+ 	<script src="js/bootstrap-datetimepicker.js"></script>
 	<script src='js/add_feed.js'></script>
    
 </body>
