@@ -10,22 +10,10 @@ Target Server Type    : MYSQL
 Target Server Version : 50612
 File Encoding         : 65001
 
-Date: 2017-02-04 18:22:16
+Date: 2017-02-12 20:28:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
-
--- ----------------------------
--- Table structure for `pic`
--- ----------------------------
-DROP TABLE IF EXISTS `pic`;
-CREATE TABLE `pic` (
-  `pic` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of pic
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for `t_classify`
@@ -110,8 +98,8 @@ CREATE TABLE `t_sellcon` (
 -- Records of t_sellcon
 -- ----------------------------
 INSERT INTO `t_sellcon` VALUES ('28', '2017-02-04', '4');
-INSERT INTO `t_sellcon` VALUES ('77', '2017-02-03', '5');
-INSERT INTO `t_sellcon` VALUES ('78', '2017-02-03', '5');
+INSERT INTO `t_sellcon` VALUES ('77', '2017-02-12', '5');
+INSERT INTO `t_sellcon` VALUES ('78', '2017-02-12', '5');
 INSERT INTO `t_sellcon` VALUES ('81', '2017-02-04', '5');
 
 -- ----------------------------
