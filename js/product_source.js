@@ -3,7 +3,6 @@
         var param={pagenum:0,pagesize:10};
         $.post('php/product_source.php',{source:param,searchs:""},function(data){
             var data=JSON.parse(data);
-            console.log(data);
             var page_size=10;
             var flag=true;
             var sort_list=['source_id','source_name','address','tel'];
@@ -22,8 +21,7 @@
             })
             $('#productSource').find('[data-node="length"]').change(function(){   
             	var length= $('#productSource').find('[data-node="length"]').val()         	
-                productSource.reset_table(0,length)
-                
+                productSource.reset_table(0,length)   
             })
             productSource.delete_data()
         });
@@ -84,7 +82,7 @@
             tabdata['totalPage'] = data.totalpage==0?1:data.totalpage;
             tabdata['totalShow']='每页显示'+page_size+'条';
             var tdList=[];
-            productInfo.setTabData(tabdata,thList,data.arr,flag,sort_list);
+            productSource.setTabData(tabdata,thList,data.arr,flag,sort_list);
             $('#productSource .tab').table(tabdata);
             $('#productSource').find('ul.pagination li').not('.disabled').find('a').click(function(){
             	var length= $('#productSource').find('[data-node="length"]').val()
