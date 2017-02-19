@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50612
 File Encoding         : 65001
 
-Date: 2017-02-12 20:28:43
+Date: 2017-02-19 21:52:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -89,18 +89,18 @@ DROP TABLE IF EXISTS `t_sellcon`;
 CREATE TABLE `t_sellcon` (
   `close_id` int(50) NOT NULL DEFAULT '0',
   `sell_date` date NOT NULL,
-  `sell_number` int(50) NOT NULL,
-  PRIMARY KEY (`close_id`),
-  CONSTRAINT `close_id` FOREIGN KEY (`close_id`) REFERENCES `t_close` (`close_id`)
+  `sell_number` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_sellcon
 -- ----------------------------
 INSERT INTO `t_sellcon` VALUES ('28', '2017-02-04', '4');
-INSERT INTO `t_sellcon` VALUES ('77', '2017-02-12', '5');
-INSERT INTO `t_sellcon` VALUES ('78', '2017-02-12', '5');
-INSERT INTO `t_sellcon` VALUES ('81', '2017-02-04', '5');
+INSERT INTO `t_sellcon` VALUES ('77', '2017-02-19', '5');
+INSERT INTO `t_sellcon` VALUES ('78', '2017-02-19', '5');
+INSERT INTO `t_sellcon` VALUES ('81', '2017-02-19', '5');
+INSERT INTO `t_sellcon` VALUES ('77', '2017-02-07', '2');
+INSERT INTO `t_sellcon` VALUES ('77', '2016-11-28', '4');
 
 -- ----------------------------
 -- Table structure for `t_source`
