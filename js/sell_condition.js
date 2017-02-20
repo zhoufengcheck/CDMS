@@ -1,16 +1,27 @@
 $(function () {
 	init_echarts.today_earn();
+	init_echarts.a_month();
  });
  var init_echarts={
  	today_earn:function(){
  		$.get('php/today_earn.php',function(data){
- 			console.log(data);
  			var dom=$('#today_earn').get(0);
  			var gauge_dom=echarts.init(dom, 'customed');
  			echart.init_gauge(gauge_dom,data);
  			
  		})
+ 	},
+ 	a_month:function(){
+ 		$.get('php/a_month.php',function(data){
+ 			var data=JSON.parse(data);
+ 			console.log(data);
+ 			// var dom=$('#today_earn').get(0);
+ 			// var gauge_dom=echarts.init(dom, 'customed');
+ 			// echart.init_gauge(gauge_dom,data);
+ 			
+ 		})
  	}
+
  }
  var echart={
  	init_gauge:function(dom,data){
