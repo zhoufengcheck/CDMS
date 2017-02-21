@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50612
 File Encoding         : 65001
 
-Date: 2017-02-20 17:37:52
+Date: 2017-02-21 17:36:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -52,22 +52,23 @@ CREATE TABLE `t_close` (
   KEY `classify` (`classify_id`),
   CONSTRAINT `classify` FOREIGN KEY (`classify_id`) REFERENCES `t_classify` (`classify_id`),
   CONSTRAINT `sourceclose` FOREIGN KEY (`source_id`) REFERENCES `t_source` (`source_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of t_close
 -- ----------------------------
-INSERT INTO `t_close` VALUES ('28', '时尚连帽卫衣aasad', '4', '234', '234', '灰色，黑色', 'S,M,L,XL', '23', '3', 'pic.jpg');
+INSERT INTO `t_close` VALUES ('28', '时尚连帽卫衣aasad', '4', '234', '250', '灰色，黑色', 'S,M,L,XL', '23', '3', 'pic.jpg');
 INSERT INTO `t_close` VALUES ('77', '连衣裙', '4', '100', '300', '白色，灰色，浅蓝', 'S,M,XL', '裙子大方简洁', '2', 'pic.jpg');
 INSERT INTO `t_close` VALUES ('78', '休闲哈伦裤', '3', '100', '130', '黑色，灰色', 'S,M,L,XL', '休闲大方', '3', 'pic.jpg');
 INSERT INTO `t_close` VALUES ('81', '牛仔裤', '2', '100', '200', '蓝色，灰色，黑色', 'S,M,L,XL', '显瘦', '2', 'pic.jpg');
-INSERT INTO `t_close` VALUES ('83', '1', '4', '123', '11', 'dh1', 'ewq', 'qwe', '3', 'qw');
-INSERT INTO `t_close` VALUES ('84', 'ew', '4', '123', '122', '1', '1', '1', '3', '3');
-INSERT INTO `t_close` VALUES ('86', 'wer', '2', '104', '100', 'wer', 'S', 'wer', '1', 'QQ图片20161108111738 (2).jpg');
-INSERT INTO `t_close` VALUES ('87', 'wer', '2', '100', '100', 'wre', 'S', 'rwe', '1', 'QQ图片20161108111738 (2).jpg');
-INSERT INTO `t_close` VALUES ('88', 'wer', '3', '100', '100', 'dg', 'S', 'gtr', '2', 'pic.jpg');
-INSERT INTO `t_close` VALUES ('89', 'ert', '2', '100', '100', 'df', 'S', 'df', '1', 'pic.jpg');
-INSERT INTO `t_close` VALUES ('90', 'df', '4', '100', '100', 'gt', 'S,M,L,XL', 'trg', '1', 'pic.jpg');
+INSERT INTO `t_close` VALUES ('83', '1', '4', '123', '157', 'dh1', 'ewq', 'qwe', '3', 'qw');
+INSERT INTO `t_close` VALUES ('84', 'ew', '4', '123', '144', '1', '1', '1', '3', '3');
+INSERT INTO `t_close` VALUES ('86', 'wer', '2', '104', '150', 'wer', 'S', 'wer', '1', 'QQ图片20161108111738 (2).jpg');
+INSERT INTO `t_close` VALUES ('87', 'wer', '2', '100', '123', 'wre', 'S', 'rwe', '1', 'QQ图片20161108111738 (2).jpg');
+INSERT INTO `t_close` VALUES ('88', 'wer', '3', '100', '111', 'dg', 'S', 'gtr', '2', 'pic.jpg');
+INSERT INTO `t_close` VALUES ('89', 'ert', '2', '100', '130', 'df', 'S', 'df', '1', 'pic.jpg');
+INSERT INTO `t_close` VALUES ('90', 'df', '4', '100', '134', 'gt', 'S,M,L,XL', 'trg', '1', 'pic.jpg');
+INSERT INTO `t_close` VALUES ('92', 'dsf', '4', '122', '140', 'qwe', 'qwe', '123', '3', 'qwe');
 
 -- ----------------------------
 -- Table structure for `t_feed`
@@ -106,13 +107,22 @@ INSERT INTO `t_sellcon` VALUES ('28', '2017-02-04', '10');
 INSERT INTO `t_sellcon` VALUES ('77', '2017-02-07', '2');
 INSERT INTO `t_sellcon` VALUES ('78', '2017-02-15', '4');
 INSERT INTO `t_sellcon` VALUES ('83', '2017-02-05', '11');
-INSERT INTO `t_sellcon` VALUES ('84', '2017-02-13', '0');
+INSERT INTO `t_sellcon` VALUES ('84', '2017-02-14', '0');
 INSERT INTO `t_sellcon` VALUES ('86', '2017-02-17', '2');
 INSERT INTO `t_sellcon` VALUES ('87', '2017-02-08', '2');
 INSERT INTO `t_sellcon` VALUES ('88', '2017-02-06', '2');
 INSERT INTO `t_sellcon` VALUES ('89', '2017-01-29', '12');
 INSERT INTO `t_sellcon` VALUES ('90', '2017-02-02', '1');
-INSERT INTO `t_sellcon` VALUES ('81', '0000-00-00', '0');
+INSERT INTO `t_sellcon` VALUES ('81', '2017-02-13', '3');
+INSERT INTO `t_sellcon` VALUES ('92', '2017-02-20', '1');
+INSERT INTO `t_sellcon` VALUES ('92', '2016-01-04', '20');
+INSERT INTO `t_sellcon` VALUES ('28', '2017-01-29', '12');
+INSERT INTO `t_sellcon` VALUES ('77', '2017-01-02', '1');
+INSERT INTO `t_sellcon` VALUES ('81', '2017-01-03', '5');
+INSERT INTO `t_sellcon` VALUES ('77', '2017-01-04', '7');
+INSERT INTO `t_sellcon` VALUES ('77', '2017-01-31', '1');
+INSERT INTO `t_sellcon` VALUES ('84', '2017-02-14', '11');
+INSERT INTO `t_sellcon` VALUES ('87', '2017-02-06', '2');
 
 -- ----------------------------
 -- Table structure for `t_source`
