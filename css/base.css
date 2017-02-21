@@ -91,3 +91,6 @@ form .form-group .form-control{width: 57%;box-shadow: none;display: inline-block
 .input-group span{cursor: pointer;}
 /*datetimepicker-days*/
 .datetimepicker-days table.table-condensed>tbody>tr>td.disabled{cursor:no-drop;}
+.echart_circle{
+  display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;
+}

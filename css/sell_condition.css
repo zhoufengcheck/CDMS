@@ -5,3 +5,4 @@
 .contentBox .chart_box{height: 450px;float: left;background-color:#F8F8F8;margin-bottom: 40px;}
 .contentBox .chart_box .title{width: 100%;height: 40px;background-color: #ccc;line-height: 40px;text-indent: 20px;font-size: 14px;color:#444;font-weight:bolder;}
 .contentBox .chart_box .chart_box_con{width: 100%;height: 410px;}
+.contentBox .chart_box .chart_box_width_half{width: 50%;height: 410px;float: left}

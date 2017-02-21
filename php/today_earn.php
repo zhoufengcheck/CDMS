@@ -32,7 +32,8 @@
     }
     $close_ids=array();
     $today_earn_num=array();
-	$sql="select close_id,sell_number from t_sellcon where sell_date='".date("Y-m-d")."'";
+    $sql="SELECT close_id,sell_number FROM t_sellcon WHERE TO_DAYS( NOW( ) ) - TO_DAYS( sell_date) <= 1";
+	// $sql="select close_id,sell_number from t_sellcon where sell_date='".date("Y-m-d")."'";
 	$result = mysql_query($sql);//今日售卖件数
 	while($row = mysql_fetch_array($result))
 	{	$data=new ResultNum();

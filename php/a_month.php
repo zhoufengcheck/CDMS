@@ -7,22 +7,12 @@
    }
   class Series{
     public $yAxis=array();
-    public $unit="件";
+    public $unit="";
     public $data=array();
    }
-  function data_instrctor($result){
-        $arrs =array();
-        while($row = mysql_fetch_array($result)){
-           foreach ($row as $key => $value) {
-               $row[$key]=urlencode($value);
-           }
-           $arrs[]=$row;
-        }     
-       return $arrs;
-  }
+
 
   function ArrUnique($arr){//数组去重
-    echo count($arr);
     $res=array();
     $close_id=array();
     for($x = 0;$x<count($arr);$x++){
@@ -62,9 +52,11 @@
     }
     return $res;    
   }
-  function ReturnSeries($arr){//数组去重
+  function ReturnSeries($arr){//最后返回
     $series=new Series();
+    $output=array();
     $yAxis=array();
+    $data=array();
     for($x=0;$x<count($arr)-1;$x++){
       $close_name=$arr[$x]->close_name;
       $close_id=$arr[$x]->close_id;
@@ -77,22 +69,29 @@
            $index=$y;
         }
       } 
-   
       $arr[$x]->close_name =$arr[$index]->close_name;
       $arr[$x]->close_id =$arr[$index]->close_id;
       $arr[$x]->sell_num =$arr[$index]->sell_num;
-   
       $arr[$index]->close_name =$close_name;
       $arr[$index]->close_id =$close_id;
       $arr[$index]->sell_num =$sell_num;
     }
     if(count($arr)>10){
-      $output = array_slice($arr, 10);
+      $output = array_slice($arr,0,10);
+    }else{
+      $output=$arr;
     }
-    return $arr;
+    for($x=0;$x<count($output);$x++){
+        $yAxis[]=$output[$x]->close_name."(ID:".$output[$x]->close_id.")";
+        $data[]=(int)$output[$x]->sell_num;
+    }
+    $series->yAxis=array_reverse($yAxis);
+    $series->data=array_reverse($data);
+    $series->unit=urlencode("件");
+    return $series;
   }
 
-  $sql="select * from t_sellcon where  sell_date>DATE_SUB(CURDATE(), INTERVAL 1 MONTH)";
+  $sql="select * from t_sellcon where sell_date>DATE_SUB(CURDATE(), INTERVAL 1 MONTH)";
 	$result = mysql_query($sql);//今日售卖件数
   $select_data=array();
   while($row = mysql_fetch_array($result))
@@ -102,26 +101,9 @@
     $data->sell_num=$row['sell_number'];
     $select_data[]=$data;
   }
-  echo(count($select_data));
   $a=array();
   $a=ArrUnique($select_data);
   $series=ReturnSeries($a);
   echo urldecode(json_encode($series));
-
-
-
-	 // for($x = 0;$x<count($a);$x++){//遍历数组的值
-  //   echo "</br>";
-  //   echo $a[$x]->close_id."  ".$a[$x]->sell_num."  ".$a[$x]->close_name."</br>";
-  // }
-
-
-
-
-
-    // $res=array();
-    // $res=data_instrctor($result);
-    // echo urldecode(json_encode($res));
-
    
 ?>
