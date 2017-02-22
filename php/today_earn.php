@@ -35,6 +35,7 @@
     $sql="SELECT close_id,sell_number FROM t_sellcon WHERE TO_DAYS( NOW( ) ) - TO_DAYS(sell_date) <= 1";
 	// $sql="select close_id,sell_number from t_sellcon where sell_date='".date("Y-m-d")."'";
 	$result = mysql_query($sql);//今日售卖件数
+
 	while($row = mysql_fetch_array($result))
 	{	$data=new ResultNum();
 		$close_ids[]=$row['close_id'];
@@ -42,18 +43,22 @@
 		$data->sell_number=$row['sell_number'];
 		$today_earn_num[]=$data;
 	}
+    if(count($today_earn_num)!=0){
+        $string=implode(",",$close_ids);
+        $sql_price="select close_id,cost_price,sale_price from t_close where close_id in (".$string.")";
+        $result1 = mysql_query($sql_price);
+        $today_earn_price=array();
+        while($row = mysql_fetch_array($result1))
+        {   $data=new ResultPrice();
+            $data->close_id=$row['close_id'];
+            $data->sale_price=$row['sale_price'];
+            $data->cost_price=$row['cost_price'];
+            $today_earn_price[]=$data;
+        }
+        $total=today_eran_money($today_earn_price,$today_earn_num);
+        echo $total;
+    }else{
+        echo 0;
+    }
 	
-	$string=implode(",",$close_ids);
-	$sql_price="select close_id,cost_price,sale_price from t_close where close_id in (".$string.")";
-	$result1 = mysql_query($sql_price);
-	$today_earn_price=array();
-	while($row = mysql_fetch_array($result1))
-	{	$data=new ResultPrice();
-		$data->close_id=$row['close_id'];
-		$data->sale_price=$row['sale_price'];
-		$data->cost_price=$row['cost_price'];
-		$today_earn_price[]=$data;
-	}
-	$total=today_eran_money($today_earn_price,$today_earn_num);
-	echo $total;
 ?>

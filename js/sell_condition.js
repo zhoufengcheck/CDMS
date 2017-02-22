@@ -1,8 +1,14 @@
 var fontFamily='"PingFang SC","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Microsoft Yahei","微软雅黑",STHeiti,"华文细黑",sans-serif';
+var d = new Date();
+var today = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
 $(function () {
 	init_echarts.today_earn();
 	init_echarts.a_month();
     init_echarts.three_month();
+
+    //////////////
+    tab_init.init_tab(today,0);
+    tab_init.init_datetimepicker();
  });
  var init_echarts={
  	today_earn:function(){
@@ -27,15 +33,54 @@ $(function () {
             var dom=$('#three_month_line').get(0);
             var three_month_dom=echarts.init(dom, 'customed');
             echart.init_line(data,three_month_dom);
-             three_month_dom.on('click', function (params) {
-                alert(1);
+             three_month_dom.on('click', function(params){
+                $(".form_datetime input").val(params.name)
+                tab_init.init_tab(params.name,0);
             })
         })
     }
  }
  var tab_init={
-    init:function(date){
-        
+    init_datetimepicker:function(){
+         $(".form_datetime input").val(today);
+         $(".form_datetime")
+         .datetimepicker({
+            format: "yyyy-mm-dd",
+             autoclose: true,
+             startView:"month",
+             minView:"month",
+             language:  'zh',
+        })
+        $(".form_datetime").datetimepicker('setStartDate', '2016/01/01');
+        $(".form_datetime").datetimepicker("setEndDate",new Date());
+        $(".form_datetime").bind('change',function(){
+           tab_init.init_tab($(".form_datetime input").val(),0);
+        })
+      
+    },
+    init_tab:function(date,index){
+        var _date=date;
+        var _index=index;
+        $.post('php/every_day_con.php',{time:_date,index:_index},function(data){
+            var data=JSON.parse(data);
+            var sort_list=['name_id','sell_num','money'];
+            var thList=['名称(ID)','售出数量(件)','收入(元)'];
+            var tabdata={}
+            tabdata['totalPage'] = data.total==0?1:data.total;//总的条数
+            tabdata['pageNum']=index+1;//当前页
+            tabdata['pageCount'] = 8;//每页显示多少条
+            tabdata['totalShow']='每页显示8条';//
+            var tdList=[];
+            setTabData(tabdata,thList,data.arr,sort_list);
+            $('#three_month_tab .tab').table(tabdata);
+            $('#three_month_tab a').on('click',function(){
+               if($(this).parent().hasClass('disabled')){
+                    return;
+               }else{
+                    tab_init.init_tab($(".form_datetime input").val(),$(this).attr('data-num')-1);
+               }
+            })
+        })    
     }
  }
  var echart={
@@ -170,4 +215,32 @@ $(function () {
         };
         id.setOption(option);
     }
+ }
+ function setTabData(data,thList,tdList,sort_list){
+        var _th=[];
+        var _td=[];
+        for(var i=0;i<thList.length;i++){
+            var th ={
+                content: thList[i],
+                isCenter: "",
+                sortName: "display"+i
+            }
+            _th.push(th);
+        }
+        for(var i=0;i<tdList.length;i++){
+            var td=[];
+            for(var j=0;j<sort_list.length;j++) {         
+                var td_opt = {
+                    content: tdList[i][sort_list[j]],
+                    isCenter: "",
+                    isSorting: "sorting",
+                    sortName: "display"
+                }
+                td.push(td_opt);
+                
+            }
+            _td.push(td);
+        }
+        data['th'] = _th;
+        data['td'] = _td;
  }

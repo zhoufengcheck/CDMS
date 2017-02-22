@@ -33,7 +33,7 @@
     function earn($arr_num,$arr_money){
         $arr=array();
         for($x=0;$x<count($arr_num);$x++){
-             $result_earn=new ResultEarn();
+            $result_earn=new ResultEarn();
             $money=0;
             for($y=0;$y<count($arr_money);$y++){
                 if($arr_num[$x]->close_id==$arr_money[$y]->close_id){
@@ -72,6 +72,7 @@
                 }
             }
         }
+        
         //数组排序日期从前到后
         for($x=0;$x<count($result)-1;$x++){
             $min=$result[$x]->sell_date;
@@ -81,7 +82,6 @@
             for($y=$x+1;$y<count($result);$y++){
                 if($min>$result[$y]->sell_date){
                     $min=$result[$y]->sell_date;
-                    $money=$result[$y]->money;
                     $index=$y;
                 }
             }
@@ -119,8 +119,10 @@
         $data->sell_num=$row['sell_number'];
         $data->sell_date=$row['sell_date'];
         $three_month_num[]=$data;
-    }       
-
+    }
+    // for($x=0;$x<count($three_month_num);$x++){
+    //     echo $three_month_num[$x]->close_id.' '.$three_month_num[$x]->sell_num.' '.$three_month_num[$x]->sell_date.'</br>';
+    // }       
     $string=implode(",",$close_ids);
     $sql_price="select close_id,cost_price,sale_price,close_name from t_close where close_id in (".$string.")";
     $result1 = mysql_query($sql_price);
@@ -130,17 +132,16 @@
         $data->close_id=$row['close_id'];
         $data->sale_price=$row['sale_price'];
         $data->cost_price=$row['cost_price'];
-        $data->cost_price=$row['close_name'];
+        $data->close_name=$row['close_name'];
         $today_earn_price[]=$data;
     }
    $arr=earn($three_month_num,$today_earn_price);
+  
    $arr1=ArrUnique($arr);
    $result_series=ChangeToSeries($arr1);
     echo urldecode(json_encode($result_series));
 
 
 
-    // $result=mysql_query($sql);
-    // $arr=data_instrctor($result);
-    // echo urldecode(json_encode($arr));
+
 ?>
