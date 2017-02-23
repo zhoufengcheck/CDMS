@@ -27,7 +27,6 @@
             })
             productInfo.oper_data()
         });
-
  	},
  	setTabData:function(data,thList,tdList,flag,sort_list){
         var _th=[];
