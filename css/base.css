@@ -17,7 +17,8 @@ a:hover{text-decoration: none;}
 .fontArialMT{font-family:'ArialMT'}
 .hide{opacity: 0}
 
-.main{width: 100%;height: 100%;}
+.main{width: 100%;min-height: 100%;position: relative;}
+.main .padding{padding-bottom:50px;}
 /******************.main .header**********************/
 .main .header{width:100%;height: 50px;background-color:#30527d}
 .main .header .navbar{width: 1100px;height:50px;margin: 0 auto;background-color:#30527d;border: none;position: static;}
@@ -34,8 +35,8 @@ a:hover{text-decoration: none;}
 .main .contentBox .path{width: 100%;height:40px;border-bottom: 2px solid #4f84ce}
 .main .contentBox .path a,.main .contentBox .path span{font-size: 18px;}
 .main .contentBox .path a:hover{text-decoration: none;}
-
-
+.main .footer{width: 100%;height:50px;background-color: #30527d;position: absolute;bottom: 0;left: 0;z-index: 1000;line-height:50px;text-align: center;}
+.main .footer img{vertical-align: middle;}
 /*.pull-left .dataTables_length label .chosen-container .chosen-drop{width: 70px}*/
 .pull-left .dataTables_length>label ,.pull-left .dataTables_length>span{font-size: 14px;color: #444;font-weight: normal;}
 .pull-left .dataTables_length{font-size: 14px;color: #444;font-weight: normal;}
