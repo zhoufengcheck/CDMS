@@ -9,7 +9,6 @@ $(function(){
 	 			$('.warm').addClass('hide');
 	 			$('#login').attr("href","http://localhost/CDMS/index.html")
 	 			location.href = "http://localhost/CDMS/index.html?username="+username;
-	 			// location.href = "NewList.aspx?pagenum="+pn
 	 		}else{
 	 			$('.warm').removeClass('hide');
 	 		}

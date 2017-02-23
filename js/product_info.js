@@ -146,7 +146,7 @@
  $(function () {
  	productInfo.init_table();
     productInfo.search();
-    
+    $('#wele_user').html(localStorage.getItem("name"))
  	productSource.init_table();
  	productSource.search();
     $('.select').chosen({
