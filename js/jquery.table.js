@@ -8,7 +8,7 @@
                 "thead": '<thead>' + '<tr>{{th}}</tr>' + '</thead>',
                 "th": '<th class="{{isCenter}} {{isSorting}}" sortName="{{sortName}}">{{content}}</th>',
                 "tbody": '<tbody>{{td}}</tbody>',
-                "td": '<td class="{{isCenter}} {{isAdd}}">{{content}}</td>',
+                "td": '<td class="{{isCenter}} {{isAdd}}" sortName="{{sortName}}">{{content}}</td>',
                 "add": '<a add-id="{{addID}}" style="cursor:pointer;"><span class="ui-icon ace-icon fa fa-plus center bigger-110 blue"></span></a>'
             }
             var opt = $.extend({

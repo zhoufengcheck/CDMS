@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Grace服装小铺</title>
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/chosen.css"/>
+		<link rel="stylesheet" href="../css/reveal.css">
+		<link rel="stylesheet" href="../css/font-awesome.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" href="../css/chosen.css"/>
+	</head>
+	<body>
+		<div class="main">
+			<div class="header">
+				<h1>Grace服装小铺</h1>
+			</div>
+			<div class="contentBox">
+				<div class="search">
+			        <p>服装类型</p>
+			        <select class="select">
+			      		<option label="全部" value="0" selected="selected">全部</option>
+			      		<option label="衣服" value="1">衣服</option>
+			      		<option label="裙子" value="2">裙子</option>
+			      		<option label="裤子" value="3">裤子</option>
+			        </select>
+			        <div class="input-group">
+					    <input type="text" class="form-control"placeholder="输入服装名称" data-action="closename">
+				    </div>
+				    <button data-action="search">搜索</button>
+				</div>
+				<div class="tab"></div>
+			</div>
+			<div class="padding"></div>
+			<div class="footer">
+				
+			</div>
+		</div>
+		<div id="myModal" class="reveal-modal">
+			<div class="a_row">
+				<h4>服装名称：</h4><p data-type = "close_name"></p>
+			</div>
+			<div class="a_row">
+				<h4>售价：</h4><p data-type = "sale_price"></p>
+			</div>
+			<div class="a_row">
+				<h4>进价：</h4><p data-type = "cost_price"></p>
+			</div>
+			<div class="a_row">
+				<h4>售卖件数：</h4><input type="number" min="1" value="1" id="sell_number"/>
+			</div>
+			<div>
+				<span class="yes">确定</span>
+				<span class="no">取消</span>
+			</div>
+    	</div>
+	</body>
+	<script type="text/javascript" src="../js/jquery-3.0.0.js"></script>
+	<script type="text/javascript" src="../js/jquery.table.js"></script>
+	<script type="text/javascript" src="../js/jquery.pages.js"></script>
+	<script type="text/javascript" src="../js/chosen.jquery.min.js"></script>
+	 <script src='../js/jquery.reveal.js'></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</html>

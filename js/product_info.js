@@ -7,8 +7,8 @@
             var data=JSON.parse(data);
             var page_size=10;
             var flag=true;
-            var sort_list=['close_id','close_name',"source_name","cost_price","sale_price","color","size","classify_name"];
-            var thList=['服装ID','服装名称','商品源','进价','建议零售价(元)','颜色','型号','服装类型','操作'];
+            var sort_list=['close_id','close_name',"source_name","cost_price","sale_price","color","size","classify_name","rest"];
+            var thList=['服装ID','服装名称','商品源','进价','建议零售价(元)','颜色','型号','服装类型','存货(件)','操作'];
             var tabdata={}
             tabdata['pageNum']=1;//当前页
             tabdata['pageCount'] = page_size;
