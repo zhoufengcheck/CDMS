@@ -136,8 +136,10 @@
                  $.post('php/product_info.php',{delete_id:id},function(data){
                     var length= $('#productInfo').find('[data-node="length"]').val()
                     productInfo.reset_table(0,length);
+                    var modalLocation = "error";
+					$('#'+modalLocation).reveal($('#error').data());
                  })
-
+				
              })
          })
     }

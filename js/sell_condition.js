@@ -15,6 +15,7 @@ $(function () {
  		$.get('php/today_earn.php',function(data){
  			var dom=$('#today_earn').get(0);
  			var gauge_dom=echarts.init(dom, 'customed');
+ 			gauge_dom.showLoading();
  			echart.init_gauge(gauge_dom,data);
  			
  		})
@@ -85,6 +86,7 @@ $(function () {
  }
  var echart={
  	init_gauge:function(dom,data){
+ 		 dom.hideLoading();
  		var name="";
  		if(data>=600&&data<=1000){
  			name="收入良好"
@@ -121,6 +123,7 @@ $(function () {
 		dom.setOption(option);
  	},
  	init_single_bar:function(data,id){
+ 		id.hideLoading();
         unit=data.unit||"";
         var option={
             color:['#A9C7CF'],
@@ -171,6 +174,7 @@ $(function () {
         id.setOption(option);
     },
     init_line:function(data,id){     
+    	id.hideLoading();
         option = {
             color:['#A9C7CF'],
             tooltip : {

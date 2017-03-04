@@ -109,6 +109,8 @@
                  $.post('php/product_source.php',{source_id:id},function(data){
                      var length= $('#productSource').find('[data-node="length"]').val()
                      productSource.reset_table(0,length);
+                     var modalLocation = "error";
+					$('#'+modalLocation).reveal($('#error').data());
                  })
 
              })

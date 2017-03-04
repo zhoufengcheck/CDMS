@@ -18,7 +18,7 @@
         
         
         var defaults = {  
-	    	animation: 'fadeAndPop', //fade, fadeAndPop, none
+	    	animation: 'none', //fade, fadeAndPop, none
 		    animationspeed: 300, //how fast animtions are
 		    closeonbackgroundclick: true, //if you click background will modal close?
 		    dismissmodalclass: 'yes' //close-reveal-modal the class of a button or element that will close an open modal
@@ -70,7 +70,7 @@
 						}, options.animationspeed,unlockModal());					
 					} 
 					if(options.animation == "none") {
-						modal.css({'visibility' : 'visible', 'top':$(document).scrollTop()+topMeasure});
+						modal.css({'visibility' : 'visible'});
 						modalBG.css({"display":"block"});	
 						unlockModal()				
 					}
@@ -119,9 +119,15 @@
 
             $('.yes').click(function(){
                 modal.trigger('reveal:close');
+                modal.off()
             })
             $('.no').click(function(){
                 modal.trigger('reveal:close');
+                 modal.off()
+            })
+             $('.closebtn').click(function(){
+                modal.trigger('reveal:close');
+                 modal.off()
             })
 			
 

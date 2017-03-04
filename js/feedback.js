@@ -54,6 +54,8 @@ var feedBack={
                  $.post('php/feedback.php',{delete_id:id},function(data){
                     var length= $('.contentBox').find('[data-node="length"]').val()
                     feedBack.reset_table(0,length);
+                    var modalLocation = "error";
+					$('#'+modalLocation).reveal($('#error').data());
                  })
 
              })

@@ -31,16 +31,26 @@ var Init={
                 Init.init_table(param,search);
             })
             $('.tab').find('[data-action="sale"]').click(function(e){
-	             var id=$(this).attr('data-id')
-	             var rest=parseInt($(this).parent().parent().find('[sortName="rest"]').html());
+            	 var $this=$(this);
+	             var id=$this.attr('data-id')
+	             var rest=parseInt($this.parent().parent().find('[sortName="rest"]').html());
 	             e.preventDefault();
-	             Init.dialog_init(id,$(this));
+	             Init.dialog_init(id,$this);
 	             $('.yes').click(function(){
-	                 $.post('php/sell.php',{close_id:id,sell_number:$('#sell_number').val(),rest:rest},function(data){
-						 var param={pagenum:0,pagesize:10,arr:[1,2,3]};
-						 Init.init_table(param,"");
-	                 })
-	
+	             	var sell_number=$('#sell_number').val();
+	             	if(sell_number>rest){
+	             		$('#error p').html('该服装内存不足')
+						var modalLocation = "error";
+        				$('#'+modalLocation).reveal($('#error').data());
+	             	}else{
+	             		$('#error p').html('售卖成功')
+	             		 $.post('php/sell.php',{close_id:id,sell_number:sell_number,rest:rest},function(data){
+							var param={pagenum:0,pagesize:10,arr:[1,2,3]};
+							Init.init_table(param,"");
+							var modalLocation = "error";
+        					$('#'+modalLocation).reveal($('#error').data());
+	                 	})
+	             	}
 	             })
          	})
             Init.search();	
@@ -104,7 +114,7 @@ var Init={
             Init.init_table(param,_search);
         })
     },
-    dialog_init:function(id,dom){
+    dialog_init:function(id,dom){ 	
     	$tr=dom.parent().parent();
     	$myModal=$('#myModal');
     	console.log($tr.find('[sortName="close_name"]').html());
@@ -113,5 +123,6 @@ var Init={
 		$myModal.find('[data-type="cost_price"]').html($tr.find('[sortName="cost_price"]').html()+"元");
         var modalLocation = dom.attr('data-reveal-id');
         $('#'+modalLocation).reveal(dom.data());
+        
     },
 }
