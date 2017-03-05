@@ -1,3 +1,5 @@
+.main .header{height: 100px;text-align: center;background-color: #446792;}
+.main .header img{margin: 0;font-size: 0;}
 .tab{width: 1100px;}
 .dataTables_length>label{display: none;}
 .dataTables_length>span {margin: 0 !important}
