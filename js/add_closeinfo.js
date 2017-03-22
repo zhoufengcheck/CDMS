@@ -38,6 +38,7 @@ var Add_close_Info={
 	init_select:function(){
 		$.post('php/add_closeinfo.php',{flag:"1"},function(data){
 			var data=JSON.parse(data);
+			console.log(data);
 			var option_source=""
 			var option_classify=""
 			for(var i=0;i<data.arrs_source.length;i++){
