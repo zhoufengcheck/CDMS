@@ -8,7 +8,6 @@ $(function(){
 var Init={
 	init_table:function(param,search){
 		_search=search;
-		console.log(search);
 		$.post('php/index.php',{name:param,search:search},function(data){
 			$('.tab').off();
 			var data=JSON.parse(data);
@@ -39,7 +38,7 @@ var Init={
 	             $('.yes').click(function(){
 	             	var sell_number=$('#sell_number').val();
 	             	if(sell_number>rest){
-	             		$('#error p').html('该服装内存不足')
+	             		$('#error p').html('该服装库存不足')
 						var modalLocation = "error";
         				$('#'+modalLocation).reveal($('#error').data());
 	             	}else{
@@ -72,7 +71,7 @@ var Init={
             for(var j=0;j<sort_list.length;j++) {
             	var _content= tdList[i][sort_list[j]]
                if(sort_list[j]=="img_path"){
-               	   _content= "<img width=150 height=100 src=../../CDMS/image/"+tdList[i][sort_list[j]]+">";
+               	   _content= "<img width=120 height=100 src=../../CDMS/image/"+tdList[i][sort_list[j]]+">";
                }
                 var td_opt = {
                     content: _content,
@@ -117,7 +116,6 @@ var Init={
     dialog_init:function(id,dom){ 	
     	$tr=dom.parent().parent();
     	$myModal=$('#myModal');
-    	console.log($tr.find('[sortName="close_name"]').html());
 		$myModal.find('[data-type="close_name"]').html($tr.find('[sortName="close_name"]').html());
 		$myModal.find('[data-type="sale_price"]').html($tr.find('[sortName="sale_price"]').html()+"元");
 		$myModal.find('[data-type="cost_price"]').html($tr.find('[sortName="cost_price"]').html()+"元");

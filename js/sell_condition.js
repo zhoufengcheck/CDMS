@@ -2,11 +2,11 @@ var fontFamily='"PingFang SC","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB
 var d = new Date();
 var today = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
 $(function () {
+    $('#wele_user').html("欢迎"+localStorage.getItem("name"))
 	init_echarts.today_earn();
 	init_echarts.a_month();
     init_echarts.three_month();
 
-    //////////////
     tab_init.init_tab(today,0);
     tab_init.init_datetimepicker();
  });
@@ -88,9 +88,9 @@ $(function () {
  	init_gauge:function(dom,data){
  		 dom.hideLoading();
  		var name="";
- 		if(data>=600&&data<=1000){
+ 		if(data>=500&&data<=1000){
  			name="收入良好"
- 		}else if(data<600){
+ 		}else if(data<500){
  			name="收入不好"
  		}else{
  			name="收入好"
@@ -104,13 +104,18 @@ $(function () {
 			        	max:1000,
 			            name: '业务指标',
 			            type: 'gauge',
-			            detail: {formatter:'{value}元'},
+			            detail: {
+                            formatter:'{value}元',
+                            textStyle:{
+                                fontSize:24
+                            }
+                        },
 			            data: [{value: data, name: name}],
 			            title:{
 			            	offsetCenter: [0, '70%'],
 			            	textStyle:{
 			            		color:'red',
-			            		fontSize:20
+			            		fontSize:16
 			            	}
 			            },
 			            pointer:{

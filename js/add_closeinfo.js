@@ -18,18 +18,22 @@ var Add_close_Info={
 		var close_name=$('#close_name').val();
 		var color=$('#color').val()
 		var describle=$('#describle').val()
-		var file=$('#file').val()
+		var imghead=$('#imghead').attr('src')
 		var cost_price=$('#cost_price').val()
 		var sale_price=$('#sale_price').val()	
+		var rest=$('#rest').val()	
 		Add_close_Info.is_valid(close_name,$('#close_name'));
 		Add_close_Info.is_valid(color,$('#color'));
 		Add_close_Info.is_valid(describle,$('#describle'));
 		Add_close_Info.is_valid(cost_price,$('#cost_price'));
-		Add_close_Info.is_valid(file,$('#file'));
 		Add_close_Info.is_valid(describle,$('#describle'));
 		Add_close_Info.is_valid(sale_price,$('#sale_price'));
-
-		if(close_name==""||color==""||describle==""||file==""||cost_price==""||sale_price==""){
+		Add_close_Info.is_valid(rest,$('#rest'));
+		if(close_name==""||color==""||describle==""||cost_price==""||sale_price==""||rest==""){
+			flag=false;
+		}
+		if(imghead=='image/upload.png'){
+			$('#picerror').removeClass('hide')
 			flag=false;
 		}
 		return flag;
@@ -38,7 +42,6 @@ var Add_close_Info={
 	init_select:function(){
 		$.post('php/add_closeinfo.php',{flag:"1"},function(data){
 			var data=JSON.parse(data);
-			console.log(data);
 			var option_source=""
 			var option_classify=""
 			for(var i=0;i<data.arrs_source.length;i++){
@@ -55,13 +58,14 @@ var Add_close_Info={
 			$('#classify_id').html(option_classify);
 			
 			if($('#close_form').attr('data-status')!="edit"){
-				  $('#classify_id').chosen({
-			        width:"130px"
-			    });
-				$('#source_id').chosen({
-			        width:"150px"
-			    });
-			  
+				setTimeout(function(){
+					$('#classify_id').chosen({
+				        width:"130px"
+				    });
+					$('#source_id').chosen({
+				        width:"150px"
+				    });
+				},0)		  
 			}
 		})
 	},
@@ -71,13 +75,13 @@ var Add_close_Info={
 		$('form').find('[name="close_id"]').val(close_id);
 		$.post('php/edit_closeinfo.php',{close_id:close_id},function(data){
 			var data=JSON.parse(data);
-			console.log(data)
 			$('[data-title="close_name"]').html(data[0].close_name);
 			var size= new Array(); //定义一数组
 			size=data[0].size.split(",");//获取size
 			$('#close_name').val(data[0].close_name);
 			$('#cost_price').val(data[0].cost_price);
 			$('#sale_price').val(data[0].sale_price);
+			$('#rest').val(data[0].rest)
 			$('#color').val(data[0].color);
 			$('#describle').val(data[0].describle);
 			$('#imghead').attr('src','image/'+data[0].img_path);
@@ -97,33 +101,37 @@ var Add_close_Info={
 					$(v).attr('selected',true);
 				}
 			});
-			$('#source_id').chosen({
+			setTimeout(function(){
+				$('#source_id').chosen({
 			        width:"150px"
 			    });
-		    $('#classify_id').chosen({
-		        width:"130px"
-		    });			
+			    $('#classify_id').chosen({
+			        width:"130px"
+			    });			
+			},0)
 		})
 	}
 }
 
 $(function(){
+	$('#wele_user').html("欢迎"+localStorage.getItem("name"))
 	 Add_close_Info.init_select();
 	 if($('#close_form').attr('data-status')=="edit"){
 	 	Add_close_Info.form_edit();
 	 }
 	 $('[data-action="save"]').click(function(){
 		 	var flag=Add_close_Info.form_test();
-		   	_im        	 = document.getElementById('imghead'),
-	         im          = document.createElement('img');
-	         im.src      = _im.src,
-	         real_width  = im.width,
-	         real_height = im.height;
-	     	if(real_width>1000||real_height>1000){
-	     		$('#imghead').parent().siblings('span').html('图片尺寸太大').removeClass('hide');
-	     	}else{
-	     		$('#imghead').parent().siblings('span').html('请上传服装图片').addClass('hide');
-	     	}
+		   	// _im        	 = document.getElementById('imghead'),
+	     //     im          = document.createElement('img');
+	     //     im.src      = _im.src,
+	     //     real_width  = im.width,
+	     //     real_height = im.height;
+	     // 	// if(real_width>1000||real_height>1000){
+	     // 	// 	$('#imghead').parent().siblings('span').html('图片尺寸太大').removeClass('hide');
+	     // 	// }else{
+	     // 	// 	$('#imghead').parent().siblings('span').html('请上传服装图片').addClass('hide');
+	     // 	// }
+	     console.log(flag)
 		 	return flag;
 	 })
 	 $('[data-action="cancel"]').click(function(){

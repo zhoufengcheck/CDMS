@@ -144,6 +144,7 @@ var feedBack={
     },
  }
  $(function () {
+    $('#wele_user').html("欢迎"+localStorage.getItem("name"))
  	feedBack.init_table();
 
  });

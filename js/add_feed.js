@@ -1,4 +1,5 @@
 $(function(){
+	$('#wele_user').html("欢迎"+localStorage.getItem("name"))
 	var d = new Date();
 	var today = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
 	 $(".form_datetime input").val(today)

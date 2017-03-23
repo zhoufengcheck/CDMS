@@ -15,6 +15,11 @@
 ----------------------------*/
 
     $.fn.reveal = function(options) {
+    	 //火狐阻止页面滚动
+        if(document.addEventListener){
+           document.addEventListener('DOMMouseScroll',scrollFunc,false);
+        } //谷歌阻止页面滚动
+        document.body.onmousewheel = function(){return false;}
         
         
         var defaults = {  
@@ -119,18 +124,34 @@
 
             $('.yes').click(function(){
                 modal.trigger('reveal:close');
-                modal.off()
+                modal.off()         
+				 //谷歌开启页面滚动
+				document.body.onmousewheel = function(){return true;}
+				//火狐开启页面滚动
+				if(document.addEventListener){
+				  document.removeEventListener('DOMMouseScroll', scrollFunc, false);
+				}
             })
             $('.no').click(function(){
                 modal.trigger('reveal:close');
                  modal.off()
+                  //谷歌开启页面滚动
+				document.body.onmousewheel = function(){return true;}
+				//火狐开启页面滚动
+				if(document.addEventListener){
+				  document.removeEventListener('DOMMouseScroll', scrollFunc, false);
+				}
             })
              $('.closebtn').click(function(){
                 modal.trigger('reveal:close');
                  modal.off()
+                  //谷歌开启页面滚动
+				document.body.onmousewheel = function(){return true;}
+				//火狐开启页面滚动
+				if(document.addEventListener){
+				  document.removeEventListener('DOMMouseScroll', scrollFunc, false);
+				}
             })
-			
-
 			
 			
 /*---------------------------
@@ -146,4 +167,12 @@
         });//each call
     }//orbit plugin call
 })(jQuery);
-        
+function scrollFunc(e){
+        e=e||window.event;
+        if(e.preventDefault){
+            e.preventDefault();
+        }else{
+            return false;
+        }
+    }
+

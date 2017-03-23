@@ -43,6 +43,7 @@
       $size=implode(",",$size_arr);
       $classify_id=$_POST["classify_id"];
       $describle=$_POST["describle"];
+      $rest=$_POST["rest"];
       $img_path="";
       if (($_FILES["file"]["type"] == "image/gif")
         || ($_FILES["file"]["type"] == "image/jpeg")
@@ -57,20 +58,28 @@
             }
        }
       $flag1=$close_name==""||$cost_price==""||$sale_price==""||$cost_price==""||$source_id=="";
-      $flag2=$color==""||$size==""||$classify_id==""||$describle==""||$img_path=="";
+      $flag2=$color==""||$size==""||$classify_id==""||$describle==""||$img_path==""||$rest="";
        
       if(!$flag1||!$flag2){
           if($hidden=="add"){
-              $sql="insert into t_close (close_name,source_id,cost_price,sale_price,color,size,describle,classify_id,img_path)values
-              ('$close_name','$source_id','$cost_price','$sale_price','$color','$size','$describle','$classify_id','$img_path')";
+              $sql="insert into t_close (close_name,source_id,cost_price,sale_price,color,size,describle,classify_id,img_path,rest)values
+              ('$close_name','$source_id','$cost_price','$sale_price','$color','$size','$describle','$classify_id','$img_path','$rest')";
               $add_info=mysql_query($sql);
+              // echo $hidden;
               
           }else{
-              $close_id=$_POST['close_id'];  
-              $sql="update t_close set 
-              close_name = '$close_name',source_id='$source_id',cost_price='$cost_price',sale_price='$sale_price',
-              color='$color',size='$size',describle='$describle',classify_id='$classify_id',img_path='$img_path'
-             WHERE close_id=".$close_id; 
+              $close_id=$_POST['close_id'];
+              if($img_path=="") {
+                   $sql="update t_close set 
+                close_name = '$close_name',source_id='$source_id',cost_price='$cost_price',sale_price='$sale_price',
+                color='$color',size='$size',describle='$describle',classify_id='$classify_id',rest='$rest'
+               WHERE close_id=".$close_id; 
+              }else{
+                   $sql="update t_close set 
+                  close_name = '$close_name',source_id='$source_id',cost_price='$cost_price',sale_price='$sale_price',
+                  color='$color',size='$size',describle='$describle',classify_id='$classify_id',img_path='$img_path',rest='$rest'
+                 WHERE close_id=".$close_id; 
+              }
               $update_info=mysql_query($sql);  
           }
       }

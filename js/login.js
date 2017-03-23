@@ -8,6 +8,7 @@ $(function(){
 	 		if(data.length==1){
 	 			$('.warm').addClass('hide');
 	 			$('#login').attr("href","http://localhost/CDMS/index.html")
+	 			localStorage.setItem("name",username)
 	 			location.href = "http://localhost/CDMS/index.html?username="+username;
 	 		}else{
 	 			$('.warm').removeClass('hide');

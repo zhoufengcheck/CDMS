@@ -8,7 +8,7 @@
             var page_size=10;
             var flag=true;
             var sort_list=['close_id','close_name',"source_name","cost_price","sale_price","color","size","classify_name","rest"];
-            var thList=['服装ID','服装名称','商品源','进价','建议零售价(元)','颜色','型号','服装类型','存货(件)','操作'];
+            var thList=['服装ID','服装名称','商品源','进价(元)','建议零售价(元)','颜色','型号','服装类型','存货(件)','操作'];
             var tabdata={}
             tabdata['pageNum']=1;//当前页
             tabdata['pageCount'] = page_size;
@@ -79,7 +79,7 @@
             var data=JSON.parse(data);
             var flag=true;
             var sort_list=['close_id','close_name',"source_name","cost_price","sale_price","color","size","classify_name"];
-            var thList=['服装ID','服装名称','商品源','进价','建议零售价','颜色','型号','服装类型','操作'];
+            var thList=['服装ID','服装名称','商品源','进价(元)','建议零售价(元)','颜色','型号','服装类型','操作'];
             var tabdata={}
             tabdata['pageNum']=pageNum/10+1;//当前页
             tabdata['pageCount'] = page_size;
@@ -148,7 +148,7 @@
  $(function () {
  	productInfo.init_table();
     productInfo.search();
-    $('#wele_user').html(localStorage.getItem("name"))
+    $('#wele_user').html("欢迎"+localStorage.getItem("name"))
  	productSource.init_table();
  	productSource.search();
     $('.select').chosen({

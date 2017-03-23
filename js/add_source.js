@@ -1,4 +1,5 @@
 $(function(){
+	$('#wele_user').html("欢迎"+localStorage.getItem("name"))
 	if($('#source_form').attr('data-status')=='edit'){
  		add_source.form_edit();
 	 }
