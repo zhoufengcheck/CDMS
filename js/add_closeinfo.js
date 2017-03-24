@@ -120,19 +120,9 @@ $(function(){
 	 	Add_close_Info.form_edit();
 	 }
 	 $('[data-action="save"]').click(function(){
-		 	var flag=Add_close_Info.form_test();
-		   	// _im        	 = document.getElementById('imghead'),
-	     //     im          = document.createElement('img');
-	     //     im.src      = _im.src,
-	     //     real_width  = im.width,
-	     //     real_height = im.height;
-	     // 	// if(real_width>1000||real_height>1000){
-	     // 	// 	$('#imghead').parent().siblings('span').html('图片尺寸太大').removeClass('hide');
-	     // 	// }else{
-	     // 	// 	$('#imghead').parent().siblings('span').html('请上传服装图片').addClass('hide');
-	     // 	// }
-	     console.log(flag)
-		 	return flag;
+	 	var flag=Add_close_Info.form_test();
+	 	return flag
+	 	
 	 })
 	 $('[data-action="cancel"]').click(function(){
 		 location.href = "http://localhost/CDMS/index.html";
@@ -141,4 +131,23 @@ $(function(){
     
 
 })
+
+
+
+
+
+
+
+
+
+ // _im        	 = document.getElementById('imghead'),
+ //     im          = document.createElement('img');
+ //     im.src      = _im.src,
+ //     real_width  = im.width,
+ //     real_height = im.height;
+ // 	// if(real_width>1000||real_height>1000){
+ // 	// 	$('#imghead').parent().siblings('span').html('图片尺寸太大').removeClass('hide');
+ // 	// }else{
+ // 	// 	$('#imghead').parent().siblings('span').html('请上传服装图片').addClass('hide');
+ // 	// }
 

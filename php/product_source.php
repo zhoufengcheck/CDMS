@@ -55,6 +55,7 @@
    }
    if(isset($_POST['source_id'])){
    	 $source_id=$_POST['source_id'];
-     $del = mysql_query("delete from t_source where source_id=".$source_id);
+     $del=mysql_query("delete from t_source where source_id=".$source_id);
+     echo $del;
    }
 ?>

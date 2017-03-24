@@ -30,8 +30,18 @@ var add_source={
 		var tel=$('#tel').val();
 		add_source.is_valid(source_name,$('#source_name'));
 		add_source.is_valid(address,$('#address'));
-		add_source.is_valid(tel,$('#tel'));
-		if(source_name==""||address==""||tel==""){
+		var reg=/010\-\d{8}/
+		var $error_span=$('#tel').siblings('span')
+		if(tel==""){
+			flag=false
+			$error_span.html('电话号码不能为空').removeClass('hide')
+		}else if(!reg.test(tel)){
+			flag=false
+			$error_span.html('电话号码格式错误').removeClass('hide')
+		}else{
+			$error_span.addClass('hide');
+		}
+		if(source_name==""||address==""){
 			flag=false;
 		}
 		return flag;

@@ -33,8 +33,8 @@
 		-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
 		-box-shadow: 0 0 10px rgba(0,0,0,.4);
 		}
-	#error{width: 300px !important;height: 150px !important;padding: 0 !important;}	
-	#error p{font-size: 14px;margin-top: 20px;}
+	.litter{width: 300px !important;height: 150px !important;padding: 0 !important;}	
+	.litter>p{font-size: 14px !important;margin-top: 30px !important;}
 	.reveal-modal.small 		{ width: 200px; margin-left: -140px;}
 	.reveal-modal.medium 		{ width: 400px; margin-left: -240px;}
 	.reveal-modal.large 		{ width: 600px; margin-left: -340px;}

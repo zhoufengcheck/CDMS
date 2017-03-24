@@ -107,10 +107,18 @@
              productSource.dialog_init(true,$(this));
              $('.yes').click(function(){
                  $.post('php/product_source.php',{source_id:id},function(data){
-                     var length= $('#productSource').find('[data-node="length"]').val()
-                     productSource.reset_table(0,length);
-                     var modalLocation = "error";
-					$('#'+modalLocation).reveal($('#error').data());
+                    console.log(data)
+                    if(data==1){
+                        var length= $('#productSource').find('[data-node="length"]').val()
+                        productSource.reset_table(0,length);
+                        var modalLocation = "delete";
+                         $('#delete>p').html('删除成功')
+                        $('#'+modalLocation).reveal($('#delete').data());
+                    }else{
+                        var modalLocation = "delete";
+                        $('#delete>p').html('该商品源服装未售完，删除失败')
+                        $('#'+modalLocation).reveal($('#delete').data());
+                    }
                  })
 
              })
